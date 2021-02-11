@@ -1,63 +1,157 @@
-import { Link } from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
+import "./ReserveForm.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import "./ReserveForm.css";
+import { makeStyles } from "@material-ui/core/styles";
 import FormatTime from "../../utils/FormatTime";
+import {
+  Container,
+  Paper,
+  Button,
+  TextField,
+  FormControl,
+  Select,
+  MenuItem,
+  InputLabel,
+} from "@material-ui/core";
+import DateFnsUtils from "@date-io/date-fns";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from "@material-ui/pickers";
+import { useState } from "react";
+
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(1),
+    minWidth: 120,
+  },
+}));
 
 export default function ReserveForm() {
+  const classes = useStyles();
+
+  const handleClick = () => {
+    console.log("click");
+  };
+
+  const [selectedDate, setSelectedDate] = useState(null);
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
+  const [timeSlot, setTimeSlot] = useState("");
+  const handleTimeSlotChange = ({ target }) => {
+    console.log(target.value);
+    setTimeSlot(target.value);
+  };
+
   return (
     <>
       <Header />
 
-      <h2>PLEASE FILL IN ALL FIELDS</h2>
-
       <form>
-        <div className="form-container">
-          <div className="row">
-            <label>First name:</label>
-            <div className="input">
-              <input autoComplete="off" required type="text" />
-            </div>
-          </div>
+        <Container className="form-container">
+          <Paper elevation={10}>
+            <Grid
+              container
+              direction="column"
+              justify="center"
+              alignItems="center"
+              spacing={3}
+            >
+              <h2 className="reserve-notice">PLEASE FILL IN ALL FIELDS</h2>
 
-          <div className="row">
-            <label>Last name:</label>
-            <div className="input">
-              <input autoComplete="off" required type="text" />
-            </div>
-          </div>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  id="firstName"
+                  name="firstName"
+                  label="First name"
+                  fullWidth
+                  autoComplete="off"
+                />
+              </Grid>
 
-          <div className="row">
-            <label>Number of people:</label>
-            <div className="input">
-              <input autoComplete="off" required type="number" minLength="0" />
-            </div>
-          </div>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  id="lastName"
+                  name="lastName"
+                  label="Last name"
+                  fullWidth
+                  autoComplete="off"
+                />
+              </Grid>
 
-          <div className="row">
-            <label>Date:</label>
-            <div className="input">
-              <input autoComplete="off" required type="date" />
-            </div>
-          </div>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  id="number-of-people"
+                  name="number-of-people"
+                  label="Number of people"
+                  fullWidth
+                  autoComplete="off"
+                  type="number"
+                />
+              </Grid>
 
-          <div className="row">
-            <label>Time slot:</label>
-            <div className="input">
-              <select>
-                {[...Array(24).keys()].map((time, index) => (
-                  <option value={time} key={index}>
-                    {FormatTime.timeSlot(time)}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
+              <Grid item xs={12} sm={6}>
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                  <KeyboardDatePicker
+                    margin="normal"
+                    id="date-picker-dialog"
+                    label="Date"
+                    format="MM/dd/yyyy"
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                    KeyboardButtonProps={{
+                      "aria-label": "change date",
+                    }}
+                  />
+                </MuiPickersUtilsProvider>
+              </Grid>
 
-          <button type="submit" id="submit-button">
-            SUBMIT
-          </button>
-        </div>
+              <Grid item xs={12} sm={6}>
+                <FormControl
+                  variant="outlined"
+                  className={classes.formControl}
+                  required
+                >
+                  <InputLabel id="time-slot-label">Time slot</InputLabel>
+                  <Select
+                    labelId="time-slot-label"
+                    id="demo-simple-select-outlined"
+                    value={timeSlot}
+                    onChange={handleTimeSlotChange}
+                    label="Time slot"
+                    className={classes.selectEmpty}
+                  >
+                    {[...Array(24).keys()].map((time, index) => (
+                      <MenuItem value={time + 1} key={index}>
+                        {FormatTime.timeSlot(time)}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleClick}
+                  className="submit-button"
+                >
+                  SUBMIT
+                </Button>
+              </Grid>
+            </Grid>
+          </Paper>
+        </Container>
       </form>
 
       <Footer />
