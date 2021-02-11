@@ -1,0 +1,17 @@
+header {
+  background-color: #fbc6d0;
+  margin-bottom: 3%;
+}
+
+header a {
+  text-decoration: none;
+}
+
+header h1 {
+  color: #fb4c1f;
+  padding: 3%;
+}
+
+header #header-icon {
+  padding-right: 1%;
+}

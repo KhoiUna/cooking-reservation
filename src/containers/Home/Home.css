@@ -1,0 +1,32 @@
+legend {
+  text-align: left;
+  background-color: #c2d1e5;
+  margin: 3% 3% 1% 4.5%;
+  padding: 1%;
+  border: 3px dashed black;
+  border-radius: 12px;
+}
+
+.flex-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: justify-content;
+  padding-top: 1%;
+}
+
+.flex-buttons button {
+  font-size: medium;
+  font-weight: bold;
+  padding: 5px;
+  cursor: pointer;
+  margin-top: 3%;
+  text-decoration: 2px underline black;
+}
+
+#reserve-button {
+  background-color: greenyellow;
+}
+
+#feedback-button {
+  background-color: red;
+}
