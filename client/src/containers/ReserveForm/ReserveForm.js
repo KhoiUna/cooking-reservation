@@ -64,18 +64,23 @@ export default function ReserveForm() {
 
   const dataObj = { ...data, selectedDate, timeSlot };
   const handleClick = async () => {
-    const result = await fetch("http://localhost:5000/api/reserve", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(dataObj),
-    });
-    if ((await result.ok) === true) {
-      console.log(true);
-      setPopUp(true);
-    } else {
-      setWarn(await result.text());
+    try {
+      const res = await fetch("http://localhost:5000/api/reserve", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(dataObj),
+      });
+
+      if ((await res.ok) === true) {
+        console.log(true);
+        setPopUp(true);
+      } else {
+        setWarn(await res.text());
+      }
+    } catch (e) {
+      console.error("Error sending data...");
     }
   };
 
