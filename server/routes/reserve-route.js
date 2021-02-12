@@ -11,11 +11,12 @@ router.post("/", async (req, res) => {
       res.status(406).send("* Invalid data");
     }
 
-    const available = checkAvailability(
+    const availablility = await checkAvailability(
       req.body.selectedDate,
-      req.body.timeSlot
+      req.body.timeSlot,
+      req.body.numberOfPeople
     );
-    if (available) {
+    if (!availablility) {
       res.status(406).send("* Not enough spots, sorry!");
     } else {
       saveReservation(req.body);
@@ -23,6 +24,7 @@ router.post("/", async (req, res) => {
     }
   } catch (e) {
     console.error("Error posting data...");
+    console.error(e);
   }
 });
 

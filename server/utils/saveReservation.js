@@ -6,7 +6,7 @@ module.exports = async ({
   numberOfPeople,
   selectedDate,
   timeSlot,
-}) => {
+}) =>
   await Reservations.create({
     first_name: firstName,
     last_name: lastName,
@@ -14,4 +14,3 @@ module.exports = async ({
     selected_date: selectedDate,
     time_slot: timeSlot,
   });
-};
