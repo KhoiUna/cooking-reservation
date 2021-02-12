@@ -18,6 +18,8 @@ module.exports = async (selectedDate, timeSlot, numberOfPeople) => {
       group: ["selected_date", "time_slot"],
     });
 
+    if (res.length === 0) return true;
+
     const numOfPplThatTime = res[0].dataValues.number_of_people * 1;
 
     return numOfPplThatTime + numberOfPeople <= 8;
