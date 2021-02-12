@@ -6,11 +6,11 @@ class Reservations extends Model {}
 Reservations.init(
   {
     first_name: {
-      type: DataTypes.STRING,
+      type: DataTypes.CHAR(255),
       allowNull: false,
     },
     last_name: {
-      type: DataTypes.STRING,
+      type: DataTypes.CHAR(255),
       allowNull: false,
     },
     number_of_people: {

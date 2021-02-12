@@ -15,14 +15,14 @@ router.post("/", async (req, res) => {
       req.body.selectedDate,
       req.body.timeSlot
     );
-    if (!available) {
+    if (available) {
       res.status(406).send("* Not enough spots, sorry!");
     } else {
       saveReservation(req.body);
-      res.status(200);
+      res.sendStatus(200);
     }
   } catch (e) {
-    console.error(e);
+    console.error("Error posting data...");
   }
 });
 
