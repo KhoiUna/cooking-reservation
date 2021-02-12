@@ -74,7 +74,6 @@ export default function ReserveForm() {
       });
 
       if ((await res.ok) === true) {
-        console.log(true);
         setPopUp(true);
       } else {
         setWarn(await res.text());
