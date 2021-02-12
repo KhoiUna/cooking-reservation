@@ -2,6 +2,7 @@ import Grid from "@material-ui/core/Grid";
 import "./ReserveForm.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import Popup from "../../components/Popup/Popup";
 import { makeStyles } from "@material-ui/core/styles";
 import FormatTime from "../../utils/FormatTime";
 import {
@@ -34,26 +35,57 @@ const useStyles = makeStyles((theme) => ({
 export default function ReserveForm() {
   const classes = useStyles();
 
-  const handleClick = () => {
-    console.log("click");
-  };
-
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
 
   const [timeSlot, setTimeSlot] = useState("");
   const handleTimeSlotChange = ({ target }) => {
-    console.log(target.value);
     setTimeSlot(target.value);
   };
+
+  const [data, setData] = useState({
+    firstName: "",
+    lastName: "",
+    numberOfPeople: "",
+  });
+  const handleChange = ({ target }) => {
+    let { name, value } = target;
+    value = name === "numberOfPeople" ? value * 1 : value;
+    setData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const [popUp, setPopUp] = useState(false);
+  const [warn, setWarn] = useState("");
+
+  const dataObj = { ...data, selectedDate, timeSlot };
+  const handleClick = async () => {
+    const result = await fetch("http://localhost:5000/api/reserve", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(dataObj),
+    });
+    if ((await result.ok) === true) {
+      console.log(true);
+      setPopUp(true);
+    } else {
+      setWarn(await result.text());
+    }
+  };
+
+  const { firstName, lastName, numberOfPeople } = dataObj;
 
   return (
     <>
       <Header />
 
-      <form>
+      <form onChange={handleChange} onSubmit={(e) => e.preventDefault()}>
         <Container className="form-container">
           <Paper elevation={10}>
             <Grid
@@ -73,6 +105,7 @@ export default function ReserveForm() {
                   label="First name"
                   fullWidth
                   autoComplete="off"
+                  value={data.firstName}
                 />
               </Grid>
 
@@ -84,6 +117,7 @@ export default function ReserveForm() {
                   label="Last name"
                   fullWidth
                   autoComplete="off"
+                  value={data.lastName}
                 />
               </Grid>
 
@@ -91,7 +125,7 @@ export default function ReserveForm() {
                 <TextField
                   required
                   id="number-of-people"
-                  name="number-of-people"
+                  name="numberOfPeople"
                   label="Number of people"
                   fullWidth
                   autoComplete="off"
@@ -139,20 +173,50 @@ export default function ReserveForm() {
                 </FormControl>
               </Grid>
 
+              {warn && (
+                <Grid item xs={12} sm={6}>
+                  <p style={{ fontWeight: "bold", color: "red" }}>
+                    <i>{warn}</i>
+                  </p>
+                </Grid>
+              )}
+
               <Grid item xs={12} sm={6}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleClick}
-                  className="submit-button"
-                >
-                  SUBMIT
-                </Button>
+                {firstName &&
+                lastName &&
+                numberOfPeople > 0 &&
+                numberOfPeople <= 8 &&
+                dataObj.selectedDate.getDate() >= new Date().getDate() &&
+                dataObj.selectedDate.getFullYear() >=
+                  new Date().getFullYear() &&
+                dataObj.selectedDate.getMonth() >= new Date().getMonth() &&
+                dataObj.timeSlot ? (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleClick}
+                    className="submit-button"
+                    type="submit"
+                  >
+                    SUBMIT
+                  </Button>
+                ) : (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    className="submit-button"
+                    disabled
+                  >
+                    SUBMIT
+                  </Button>
+                )}
               </Grid>
             </Grid>
           </Paper>
         </Container>
       </form>
+
+      {popUp && <Popup fromForm="reserve" firstName={firstName} />}
 
       <Footer />
     </>

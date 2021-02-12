@@ -45,6 +45,7 @@ export default function Calendar() {
             </th>
           </tr>
         </thead>
+
         <tbody>
           <tr className="tbody-title">
             <th style={{ textAlign: "center" }} className="reservation-time">
@@ -59,21 +60,37 @@ export default function Calendar() {
             ))}
             <th></th>
           </tr>
-          {[...Array(24).keys()].map((time, index) => (
-            <tr className="reservation-rows" key={index}>
-              <th className="reservation-time">{FormatTime.timeSlot(time)}</th>
-              {new Array(7).fill(null).map((item, index) => (
-                <th key={index}>
-                  <div className="reservation-data">
-                    <p className="reservation-number">
-                      {numReserved || "..."} / 8
-                    </p>
-                  </div>
-                </th>
+          {true
+            ? [...Array(24).keys()].map((time, index) => (
+                <tr className="reservation-rows" key={index}>
+                  <th className="reservation-time">
+                    {FormatTime.timeSlot(time)}
+                  </th>
+                  {new Array(7).fill(null).map((item, index) => (
+                    <th key={index}>
+                      <div className="reservation-data">
+                        <p className="reservation-number">
+                          {numReserved || "..."} / 8
+                        </p>
+                      </div>
+                    </th>
+                  ))}
+                  <th></th>
+                </tr>
+              ))
+            : [...Array(24).keys()].map((time, index) => (
+                <tr className="reservation-rows" key={index}>
+                  <th className="reservation-time">
+                    {FormatTime.timeSlot(time)}
+                  </th>
+                  <th colSpan={7}>
+                    <div className="reservation-loading">
+                      <p className="reservation-number">...</p>
+                    </div>
+                  </th>
+                  <th></th>
+                </tr>
               ))}
-              <th></th>
-            </tr>
-          ))}
         </tbody>
       </table>
     </div>
