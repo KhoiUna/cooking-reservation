@@ -26,17 +26,25 @@ export default function FeedbackForm() {
   };
 
   const [popUp, setPopUp] = useState(false);
+  const [warn, setWarn] = useState("");
 
   const handleClick = async () => {
-    const result = await fetch("http://localhost:5000/api/feedback", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(data),
-    });
-    if ((await result.ok) === true) {
-      setPopUp(true);
+    try {
+      const res = await fetch("http://localhost:5000/api/feedback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(data),
+      });
+      if (res.ok === true) {
+        setPopUp(true);
+      } else {
+        setWarn(await res.text());
+      }
+    } catch (e) {
+      console.error("Error posting data...");
+      console.error(e);
     }
   };
 
@@ -77,6 +85,14 @@ export default function FeedbackForm() {
                   name="feedback"
                 />
               </Grid>
+
+              {warn && (
+                <Grid item xs={12} sm={6}>
+                  <p style={{ fontWeight: "bold", color: "red" }}>
+                    <i>{warn}</i>
+                  </p>
+                </Grid>
+              )}
 
               <Grid item xs={12} sm={6}>
                 {data.subject && data.feedback ? (

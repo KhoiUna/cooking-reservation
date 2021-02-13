@@ -73,13 +73,13 @@ export default function ReserveForm() {
         body: JSON.stringify(dataObj),
       });
 
-      if ((await res.ok) === true) {
+      if (res.ok === true) {
         setPopUp(true);
       } else {
         setWarn(await res.text());
       }
     } catch (e) {
-      console.error("Error sending data...");
+      console.error("Error posting data...");
       console.error(e);
     }
   };

@@ -21,7 +21,7 @@ Feedback.init(
   {
     sequelize,
     modelName: "feedback",
-    timestamps: true,
+    timestamps: false,
     freezeTableName: true,
   }
 );

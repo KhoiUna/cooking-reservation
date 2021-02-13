@@ -1,12 +1,18 @@
 const router = require("express").Router();
 const saveFeedback = require("../utils/saveFeedback");
 
-router.post("/", (req, res) => {
-  if (req.body.subject && req.body.feedback) {
-    saveFeedback(req.body.subject, req.body.feedback);
-    res.sendStatus(200);
+router.post("/", async (req, res) => {
+  try {
+    if (!req.body.subject.trim() && !req.body.feedback.trim()) {
+      res.status(406).send("* Invalid data");
+    } else {
+      saveFeedback(req.body.subject, req.body.feedback);
+      res.sendStatus(200);
+    }
+  } catch (e) {
+    console.error("Error posting feedback");
+    console.error(e);
   }
-  res.status(406).send("* Invalid data");
 });
 
 module.exports = router;
