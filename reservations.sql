@@ -1,4 +1,4 @@
-CREATE TABLE public.reservations
+CREATE TABLE reservations
 (
     id serial NOT NULL,
     first_name CHAR(255) NOT NULL,
