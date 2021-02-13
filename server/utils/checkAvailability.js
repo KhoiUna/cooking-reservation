@@ -25,6 +25,7 @@ module.exports = async (selectedDate, timeSlot, numberOfPeople) => {
     return numOfPplThatTime + numberOfPeople <= 8;
   } catch (e) {
     console.error("Error getting data");
-    return false;
+    console.error(e);
+    return;
   }
 };

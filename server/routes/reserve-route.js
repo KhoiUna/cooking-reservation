@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const checkAvailability = require("../utils/checkAvailability");
 const saveReservation = require("../utils/saveReservation");
-const validateData = require("../utils/validateData");
+const validateData = require("../helpers/validateData");
 
 router.post("/", async (req, res) => {
   try {

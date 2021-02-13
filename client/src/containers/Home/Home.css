@@ -20,7 +20,12 @@ legend {
   padding: 5px;
   cursor: pointer;
   margin-top: 3%;
-  text-decoration: 2px underline black;
+  border-radius: 12px;
+}
+
+.flex-buttons button:hover {
+  box-shadow: 4px 4px black;
+  padding: 6px;
 }
 
 #reserve-button {

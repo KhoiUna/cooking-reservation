@@ -16,14 +16,15 @@ export default function Home() {
           allowed
         </i>
       </legend>
+
       <Calendar />
 
       <div className="flex-buttons">
         <Link to="/reserve">
-          <button id="reserve-button">CLICK HERE TO RESERVE</button>
+          <button id="reserve-button">RESERVE</button>
         </Link>
         <Link to="/feedback">
-          <button id="feedback-button">CLICK HERE FOR FEEDBACK</button>
+          <button id="feedback-button">FEEDBACK</button>
         </Link>
       </div>
 

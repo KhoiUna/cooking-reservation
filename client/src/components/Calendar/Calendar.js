@@ -1,8 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import "./Calendar.css";
-import FormatTime from "../../utils/FormatTime";
-import { useState } from "react";
+import FormatTime from "../../helpers/FormatTime";
+import { useEffect, useState } from "react";
+import ReservationData from "../ReservationData/ReservationData";
 
 export default function Calendar() {
   const [dateIndex, setDateIndex] = useState(0);
@@ -15,7 +16,20 @@ export default function Calendar() {
     }
   };
 
-  const [numReserved, setNumReserved] = useState();
+  const [numReservedObj, setNumReservedObj] = useState(null);
+
+  useEffect(() => {
+    let res = (async () =>
+      await fetch(
+        `http://localhost:5000/api/calendar?dateIndex=${dateIndex}`
+      ))();
+
+    res
+      .then((r) => r.json())
+      .then((r) => {
+        setNumReservedObj(r);
+      });
+  }, [dateIndex]);
 
   return (
     <div className="Calendar">
@@ -52,7 +66,7 @@ export default function Calendar() {
               Time Slot
             </th>
             {new Array(7).fill(null).map((item, index) => (
-              <th>
+              <th key={index}>
                 <p className="date-of-week" key={index}>
                   {FormatTime.dateOfWeek(dateIndex, index)}
                 </p>
@@ -60,19 +74,15 @@ export default function Calendar() {
             ))}
             <th></th>
           </tr>
-          {true
-            ? [...Array(24).keys()].map((time, index) => (
-                <tr className="reservation-rows" key={index}>
+          {numReservedObj
+            ? [...new Array(24).fill(null)].map((item, yIndex) => (
+                <tr className="reservation-rows" key={yIndex}>
                   <th className="reservation-time">
-                    {FormatTime.timeSlot(time)}
+                    {FormatTime.timeSlot(yIndex)}
                   </th>
-                  {new Array(7).fill(null).map((item, index) => (
+                  {numReservedObj[yIndex + 1].map((item, index) => (
                     <th key={index}>
-                      <div className="reservation-data">
-                        <p className="reservation-number">
-                          {numReserved || "..."} / 8
-                        </p>
-                      </div>
+                      <ReservationData data={item * 1} />
                     </th>
                   ))}
                   <th></th>

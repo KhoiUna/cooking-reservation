@@ -9,7 +9,6 @@ module.exports = ({
   lastName &&
   numberOfPeople > 0 &&
   numberOfPeople <= 8 &&
-  selectedDate.getDate() >= new Date().getDate() &&
-  selectedDate.getFullYear() >= new Date().getFullYear() &&
-  selectedDate.getMonth() >= new Date().getMonth() &&
+  new Date(selectedDate.toLocaleDateString()) >=
+    new Date(new Date().toLocaleDateString()) &&
   timeSlot;

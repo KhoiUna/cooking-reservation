@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Popup from "../../components/Popup/Popup";
 import { makeStyles } from "@material-ui/core/styles";
-import FormatTime from "../../utils/FormatTime";
+import FormatTime from "../../helpers/FormatTime";
 import {
   Container,
   Paper,
@@ -35,9 +35,9 @@ const useStyles = makeStyles((theme) => ({
 export default function ReserveForm() {
   const classes = useStyles();
 
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date(Date.now()));
   const handleDateChange = (date) => {
-    setSelectedDate(date);
+    setSelectedDate(new Date(date));
   };
 
   const [timeSlot, setTimeSlot] = useState("");
@@ -80,6 +80,7 @@ export default function ReserveForm() {
       }
     } catch (e) {
       console.error("Error sending data...");
+      console.error(e);
     }
   };
 
@@ -190,10 +191,8 @@ export default function ReserveForm() {
                 lastName &&
                 numberOfPeople > 0 &&
                 numberOfPeople <= 8 &&
-                dataObj.selectedDate.getDate() >= new Date().getDate() &&
-                dataObj.selectedDate.getFullYear() >=
-                  new Date().getFullYear() &&
-                dataObj.selectedDate.getMonth() >= new Date().getMonth() &&
+                new Date(dataObj.selectedDate.toLocaleDateString()) >=
+                  new Date(new Date().toLocaleDateString()) &&
                 dataObj.timeSlot ? (
                   <Button
                     variant="contained"
