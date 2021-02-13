@@ -4,6 +4,7 @@ import "./Calendar.css";
 import FormatTime from "../../helpers/FormatTime";
 import { useEffect, useState } from "react";
 import ReservationData from "../ReservationData/ReservationData";
+import { origin } from "../../config";
 
 export default function Calendar() {
   const [dateIndex, setDateIndex] = useState(0);
@@ -20,9 +21,7 @@ export default function Calendar() {
 
   useEffect(() => {
     let res = (async () =>
-      await fetch(
-        `http://localhost:5000/api/calendar?dateIndex=${dateIndex}`
-      ))();
+      await fetch(`${origin}/api/calendar?dateIndex=${dateIndex}`))();
 
     res
       .then((r) => r.json())

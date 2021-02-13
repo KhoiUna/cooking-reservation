@@ -11,6 +11,7 @@ import {
   TextField,
   Button,
 } from "@material-ui/core";
+import { origin } from "../../config";
 
 export default function FeedbackForm() {
   const [data, setData] = useState({
@@ -30,7 +31,7 @@ export default function FeedbackForm() {
 
   const handleClick = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/feedback", {
+      const res = await fetch(`${origin}/api/feedback`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json;charset=utf-8",

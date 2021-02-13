@@ -21,6 +21,7 @@ import {
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 import { useState } from "react";
+import { origin } from "../../config";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -65,7 +66,7 @@ export default function ReserveForm() {
   const dataObj = { ...data, selectedDate, timeSlot };
   const handleClick = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/reserve", {
+      const res = await fetch(`${origin}/api/reserve`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
