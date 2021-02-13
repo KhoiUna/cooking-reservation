@@ -227,7 +227,7 @@ export default function ReserveForm() {
         </Container>
       </form>
 
-      {popUp && <Popup fromForm="reserve" firstName={firstName} />}
+      {popUp && <Popup fromForm="reserve" />}
 
       <Footer />
     </>

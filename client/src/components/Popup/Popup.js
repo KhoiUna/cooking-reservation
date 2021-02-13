@@ -1,11 +1,11 @@
 import "./Popup.css";
 import { Link } from "react-router-dom";
 
-export default function Popup({ fromForm, firstName }) {
+export default function Popup({ fromForm }) {
   return (
     <div className="Popup">
       {fromForm === "reserve" ? (
-        <h2 className="greet">Thanks for reserving, {firstName}!</h2>
+        <h2 className="greet">Thanks for reserving!</h2>
       ) : (
         <h2 className="greet">Thanks for your feedback!</h2>
       )}
