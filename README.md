@@ -2,7 +2,12 @@
 
 ## Introduction:
 
--A web application built with the [React](https://reactjs.org/) library.
+- A web application for reserving cooking time slot.
+
+- Built with:
+  - Frontend: [ReactJS](https://reactjs.org/).
+  - Backend: [Express](https://expressjs.com/), [Sequelize](https://sequelize.org/)
+  - Database: [PostgreSQL](https://www.postgresql.org/)
 
 -Live demo [here](https://cooking-reservation.vercel.app/).
 
