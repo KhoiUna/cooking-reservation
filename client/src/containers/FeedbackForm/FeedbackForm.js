@@ -40,6 +40,10 @@ export default function FeedbackForm() {
       });
       if (res.ok === true) {
         setPopUp(true);
+        setData({
+          subject: "",
+          feedback: "",
+        });
       } else {
         setWarn(await res.text());
       }

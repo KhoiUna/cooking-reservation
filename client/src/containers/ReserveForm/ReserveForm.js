@@ -63,7 +63,7 @@ export default function ReserveForm() {
   const [popUp, setPopUp] = useState(false);
   const [warn, setWarn] = useState("");
 
-  const dataObj = { ...data, selectedDate, timeSlot };
+  let dataObj = { ...data, selectedDate, timeSlot };
   const handleClick = async () => {
     try {
       const res = await fetch(`${origin}/api/reserve`, {
@@ -76,6 +76,13 @@ export default function ReserveForm() {
 
       if (res.ok === true) {
         setPopUp(true);
+        setData({
+          firstName: "",
+          lastName: "",
+          numberOfPeople: "",
+        });
+        setTimeSlot("");
+        setSelectedDate(new Date(Date.now()));
       } else {
         setWarn(await res.text());
       }
