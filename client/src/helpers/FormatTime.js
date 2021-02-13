@@ -74,6 +74,9 @@ module.exports = {
     if (nameIndex > 6) {
       nameIndex -= 7;
     }
+    if (nameIndex < 0) {
+      nameIndex += 7;
+    }
 
     let date = this.initialDate(index).getDate() + loopIndex;
     if (date > monthObj[this.month(index)]) {
