@@ -5,7 +5,7 @@
 - A web application for reserving cooking time slot.
 
 - Built with:
-  - Frontend: [ReactJS](https://reactjs.org/).
+  - Frontend: [ReactJS](https://reactjs.org/)
   - Backend: [Express](https://expressjs.com/), [Sequelize](https://sequelize.org/)
   - Database: [PostgreSQL](https://www.postgresql.org/)
 
