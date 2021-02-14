@@ -9,7 +9,7 @@ export default function Header() {
       <Link to="/">
         <h1>
           <FontAwesomeIcon icon={faUtensils} id="header-icon" />
-          COOKING RESERVATION
+          GLC COOKING RESERVATION
         </h1>
       </Link>
     </header>

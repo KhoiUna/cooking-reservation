@@ -96,7 +96,7 @@ export default function Calendar() {
                   </th>
                   <th colSpan={7}>
                     <div className="reservation-loading">
-                      <p className="reservation-number">...</p>
+                      <p className="reservation-number">Loading...</p>
                     </div>
                   </th>
                   <th></th>
