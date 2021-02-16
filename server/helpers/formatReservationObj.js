@@ -15,7 +15,7 @@ module.exports = (initialDate, res) => {
   res.map((i) => {
     const reserveDate = new Date(
       new Date(
-        new Date(i.dataValues.selected_date).getTime()
+        new Date(i.dataValues.selected_date).getTime() + 10 ** 8
       ).toLocaleDateString()
     );
 
