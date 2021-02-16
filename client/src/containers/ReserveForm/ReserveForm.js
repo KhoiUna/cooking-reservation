@@ -63,7 +63,7 @@ export default function ReserveForm() {
   const [popUp, setPopUp] = useState(false);
   const [warn, setWarn] = useState("");
 
-  let dataObj = { ...data, selectedDate, timeSlot };
+  let dataObj = { ...data, selectedDate: selectedDate.getTime(), timeSlot };
   const handleClick = async () => {
     try {
       const res = await fetch(`${origin}/api/reserve`, {
@@ -199,7 +199,7 @@ export default function ReserveForm() {
                 lastName &&
                 numberOfPeople > 0 &&
                 numberOfPeople <= 8 &&
-                new Date(dataObj.selectedDate.toLocaleDateString()) >=
+                new Date(new Date(dataObj.selectedDate).toLocaleDateString()) >=
                   new Date(new Date().toLocaleDateString()) &&
                 dataObj.timeSlot ? (
                   <Button
