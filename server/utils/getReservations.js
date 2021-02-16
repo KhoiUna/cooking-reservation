@@ -4,8 +4,12 @@ const formatReservationObj = require("../helpers/formatReservationObj");
 
 module.exports = async (dateIndex) => {
   try {
-    const initialDate = new Date(Date.now() + 10 ** 8 * 6 * dateIndex);
-    const seventhDate = new Date(initialDate.getTime() + 10 ** 8 * 6);
+    const initialDate = new Date(
+      new Date(Date.now() + 10 ** 8 * 6 * dateIndex).toLocaleDateString()
+    );
+    const seventhDate = new Date(
+      new Date(initialDate.getTime() + 10 ** 8 * 6).toLocaleDateString()
+    );
 
     const res = await Reservations.findAll({
       attributes: [
@@ -28,10 +32,7 @@ module.exports = async (dateIndex) => {
       order: ["time_slot", "selected_date"],
     });
 
-    const reservations = formatReservationObj(
-      new Date(initialDate.toLocaleDateString()),
-      res
-    );
+    const reservations = formatReservationObj(initialDate, res);
 
     return reservations;
   } catch (e) {

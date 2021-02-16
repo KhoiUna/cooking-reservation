@@ -5,7 +5,9 @@ const validateData = require("../helpers/validateData");
 
 router.post("/", async (req, res) => {
   try {
-    req.body.selectedDate = new Date(req.body.selectedDate);
+    req.body.selectedDate = new Date(
+      new Date(req.body.selectedDate).toLocaleDateString()
+    );
 
     if (!validateData(req.body)) {
       res.status(406).send("* Invalid data");
