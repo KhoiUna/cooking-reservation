@@ -38,7 +38,7 @@ module.exports = {
     return monthYear;
   },
   isLeapYear(index) {
-    const year = new Date(Date.now() + 10 ** 8 * 6 * index).getFullYear();
+    const year = this.initialDate(index).getFullYear();
     if (year % 4 === 0) {
       if (year % 100 === 0) {
         if (year % 400 === 0) {

@@ -63,7 +63,11 @@ export default function ReserveForm() {
   const [popUp, setPopUp] = useState(false);
   const [warn, setWarn] = useState("");
 
-  let dataObj = { ...data, selectedDate: selectedDate.toUTCString(), timeSlot };
+  let dataObj = {
+    ...data,
+    selectedDate: new Date(selectedDate.toUTCString()),
+    timeSlot,
+  };
   const handleClick = async () => {
     try {
       const res = await fetch(`${origin}/api/reserve`, {
