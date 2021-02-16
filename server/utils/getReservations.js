@@ -5,7 +5,7 @@ const formatReservationObj = require("../helpers/formatReservationObj");
 module.exports = async (dateIndex) => {
   try {
     const initialDate = new Date(Date.now() + 10 ** 8 * 6 * dateIndex);
-    const seventhDate = new Date(initialDate.getTime() + 10 ** 8 * 5);
+    const seventhDate = new Date(initialDate.getTime() + 10 ** 8 * 6);
 
     const res = await Reservations.findAll({
       attributes: [
