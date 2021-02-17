@@ -205,7 +205,7 @@ export default function ReserveForm() {
                 numberOfPeople <= 8 &&
                 new Date(new Date(dataObj.selectedDate).toLocaleDateString()) >=
                   new Date(new Date().toLocaleDateString()) &&
-                dataObj.timeSlot ? (
+                dataObj.timeSlot >= new Date().getHours() ? (
                   <Button
                     variant="contained"
                     color="primary"
