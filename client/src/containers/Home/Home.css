@@ -28,6 +28,10 @@ legend {
   padding: 6px;
 }
 
+.flex-buttons button:focus {
+  outline: none;
+}
+
 #reserve-button {
   background-color: greenyellow;
 }
