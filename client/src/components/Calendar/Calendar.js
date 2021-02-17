@@ -15,19 +15,22 @@ export default function Calendar() {
     if (move === "right") {
       setDateIndex(dateIndex + 1);
     }
+    setNumReservedObj(null);
   };
 
   const [numReservedObj, setNumReservedObj] = useState(null);
 
   useEffect(() => {
-    let res = (async () =>
-      await fetch(`${origin}/api/calendar?dateIndex=${dateIndex}`))();
+    setTimeout(() => {
+      let res = (async () =>
+        await fetch(`${origin}/api/calendar?dateIndex=${dateIndex}`))();
 
-    res
-      .then((r) => r.json())
-      .then((r) => {
-        setNumReservedObj(r);
-      });
+      res
+        .then((r) => r.json())
+        .then((r) => {
+          setNumReservedObj(r);
+        });
+    }, 100);
   }, [dateIndex]);
 
   return (
