@@ -62,10 +62,7 @@ export default function Calendar() {
               />
             </th>
           </tr>
-        </thead>
-
-        <tbody>
-          <tr className="tbody-title">
+          <tr className="thead-title">
             <th style={{ textAlign: "center" }} className="reservation-time">
               <p>Time Slot</p>
             </th>
@@ -78,6 +75,9 @@ export default function Calendar() {
             ))}
             <th></th>
           </tr>
+        </thead>
+
+        <tbody>
           {numReservedObj
             ? [...new Array(24).fill(null)].map((item, yIndex) => (
                 <tr className="reservation-rows" key={yIndex}>

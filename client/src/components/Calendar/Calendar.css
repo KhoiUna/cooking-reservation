@@ -17,6 +17,18 @@
   color: white;
 }
 
+.Calendar table thead .thead-title th {
+  top: 0;
+  position: sticky;
+  background-color: white;
+  border-bottom: 3px solid black;
+  border-top: 3px solid black;
+  border-right: 1px solid black;
+  padding: 5px;
+  color: black;
+  background-color: #c2d1e5;
+}
+
 .Calendar table .arrow-button {
   cursor: pointer;
   font-size: larger;
@@ -66,11 +78,4 @@
   border: 1px solid #dddddd;
   text-align: left;
   padding: 5px;
-}
-
-.Calendar table tbody .tbody-title th {
-  top: 0;
-  position: sticky;
-  background-color: #c2d1e5;
-  border-bottom: 3px solid black;
 }
