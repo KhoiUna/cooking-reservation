@@ -67,7 +67,7 @@ export default function Calendar() {
         <tbody>
           <tr className="tbody-title">
             <th style={{ textAlign: "center" }} className="reservation-time">
-              Time Slot
+              <p>Time Slot</p>
             </th>
             {new Array(7).fill(null).map((item, index) => (
               <th key={index}>

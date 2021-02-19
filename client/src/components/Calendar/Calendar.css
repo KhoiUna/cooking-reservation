@@ -67,6 +67,10 @@
   text-align: left;
   padding: 5px;
 }
-.Calendar table tbody .tbody-title {
+
+.Calendar table tbody .tbody-title th {
+  top: 0;
+  position: sticky;
+  background-color: #c2d1e5;
   border-bottom: 3px solid black;
 }
