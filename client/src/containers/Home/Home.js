@@ -47,9 +47,16 @@ export default function Home() {
             </Link>
           </>
         ) : (
-          <h3>
-            <i>Your RESERVE button will appear shortly. Please wait...</i>
-          </h3>
+          <p
+            style={{
+              padding: "0% 2%",
+              fontStyle: "italic",
+              fontWeight: "bold",
+              fontSize: "1.1rem",
+            }}
+          >
+            Your RESERVE button will appear shortly. Please wait...
+          </p>
         )}
       </div>
 
