@@ -24,7 +24,6 @@ export default function Calendar() {
     setTimeout(() => {
       let res = (async () =>
         await fetch(`${origin}/api/calendar?dateIndex=${dateIndex}`))();
-
       res
         .then((r) => r.json())
         .then((r) => {

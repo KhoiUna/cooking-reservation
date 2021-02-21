@@ -10,17 +10,13 @@ export default function Home() {
   const [numReservedObj, setNumReservedObj] = useState(null);
 
   useEffect(() => {
-    setTimeout(() => {
-      let res = (async () =>
-        await fetch(`${origin}/api/calendar?dateIndex=0`))();
-
-      res
-        .then((r) => r.json())
-        .then((r) => {
-          setNumReservedObj(r);
-        });
-    }, 100);
-  });
+    let res = (async () => await fetch(`${origin}/api/calendar?dateIndex=0`))();
+    res
+      .then((r) => r.json())
+      .then((r) => {
+        setNumReservedObj(r);
+      }, 100);
+  }, []);
 
   return (
     <div className="Home">
