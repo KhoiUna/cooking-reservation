@@ -1,5 +1,6 @@
 import "./Popup.css";
 import { Link } from "react-router-dom";
+import thankyou from "../../img/thankyou.jpg";
 
 export default function Popup({ fromForm }) {
   return (
@@ -9,11 +10,7 @@ export default function Popup({ fromForm }) {
       ) : (
         <h2 className="greet">Thanks for your feedback!</h2>
       )}
-      <img
-        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstockshop.angiemakes.com%2Fwp-content%2Fuploads%2F2018%2F10%2Fthankyou-01-1024x1024.jpg&f=1&nofb=1"
-        alt="thank you"
-        width="200"
-      />
+      <img src={thankyou} alt="Thank you" width="200" />
       <br />
 
       <Link to="/">
