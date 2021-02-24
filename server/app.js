@@ -27,7 +27,7 @@ const feedbackRoute = require("./routes/feedback-route");
 app.use("/api/feedback", feedbackRoute);
 
 //Error handling
-app.use((err, re, res, next) => {
+app.use((err, req, res, next) => {
   const status = err.status || 500;
   res.status(status).send(err.message);
 });
