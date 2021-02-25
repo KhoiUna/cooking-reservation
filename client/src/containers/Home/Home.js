@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { origin } from "../../config";
 import Header from "../../components/Header/Header";
 import Calendar from "../../components/Calendar/Calendar";
@@ -18,6 +18,7 @@ export default function Home() {
     setNumReservedObj(null);
   };
 
+  const [firstFetch, setFirstFetch] = useState(true);
   const [numReservedObj, setNumReservedObj] = useState(null);
   useEffect(() => {
     setTimeout(() => {
@@ -27,12 +28,10 @@ export default function Home() {
         .then((r) => r.json())
         .then((r) => {
           setNumReservedObj(r);
+          setFirstFetch(false);
         });
     }, 100);
   }, [dateIndex]);
-
-  const firstFetch = useRef(true);
-  firstFetch.current = false;
 
   return (
     <div className="Home">
@@ -53,7 +52,7 @@ export default function Home() {
       />
 
       <div className="flex-buttons">
-        {!firstFetch.current ? (
+        {!firstFetch || numReservedObj ? (
           <>
             <Link to="/reserve">
               <button id="reserve-button">RESERVE</button>
