@@ -1,0 +1,27 @@
+.ReservationList-layer {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+
+.ReservationList {
+  position: absolute;
+  border-radius: 12px;
+  border-width: 9px;
+  border-style: solid;
+  width: 70%;
+  height: 54%;
+  text-align: center;
+  background-color: white;
+  bottom: 12%;
+  left: 15%;
+}
+
+.ReservationDataPopup .title {
+  margin: 3% 0;
+}
