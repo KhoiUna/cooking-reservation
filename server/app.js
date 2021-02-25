@@ -3,10 +3,14 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const express = require("express");
 const app = express();
+const helmet = require("helmet");
+const compression = require("compression");
 const { origin } = require("./config");
 
 const PORT = process.env.PORT || 5000;
 
+app.use(compression());
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(
   cors({
