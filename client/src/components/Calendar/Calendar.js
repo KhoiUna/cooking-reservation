@@ -86,13 +86,9 @@ export default function Calendar() {
                   {numReservedObj[yIndex + 1].map((item, index) => (
                     <th key={index}>
                       <ReservationData
-                        selectedDate={
-                          new Date(
-                            new Date(
-                              new Date().getTime() + 10 ** 8 * index
-                            ).toLocaleDateString()
-                          )
-                        }
+                        selectedDate={new Date(
+                          new Date().getTime() + 10 ** 8 * index
+                        ).toLocaleDateString()}
                         timeSlot={yIndex + 1}
                         numberOfPeople={item * 1}
                       />

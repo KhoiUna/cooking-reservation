@@ -12,7 +12,7 @@ export default function ReservationList({
   useEffect(() => {
     let res = (async () =>
       await fetch(
-        `${origin}/api/calendar/reservations-list?selectedDate=${new Date().toLocaleDateString()}&timeSlot=${timeSlot}`
+        `${origin}/api/calendar/reservations-list?selectedDate=${selectedDate}&timeSlot=${timeSlot}`
       ))();
     res
       .then((r) => r.json())
