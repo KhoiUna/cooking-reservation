@@ -88,7 +88,7 @@ export default function Calendar() {
                       <ReservationData
                         selectedDate={new Date(
                           new Date().getTime() + 10 ** 8 * index
-                        ).toLocaleDateString()}
+                        ).toDateString()}
                         timeSlot={yIndex + 1}
                         numberOfPeople={item * 1}
                       />

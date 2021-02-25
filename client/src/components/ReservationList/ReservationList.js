@@ -10,6 +10,7 @@ export default function ReservationList({
 }) {
   const [reservationList, setReservationList] = useState([]);
   useEffect(() => {
+    console.log(selectedDate);
     let res = (async () =>
       await fetch(
         `${origin}/api/calendar/reservations-list?selectedDate=${selectedDate}&timeSlot=${timeSlot}`
