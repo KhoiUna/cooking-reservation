@@ -7,16 +7,26 @@ import Footer from "../../components/Footer/Footer";
 import "./Home.css";
 
 export default function Home() {
-  const [numReservedObj, setNumReservedObj] = useState(null);
+  const [dateIndex, setDateIndex] = useState(0);
+  const handleClickDate = (move) => {
+    if (move === "left") {
+      setDateIndex(dateIndex - 1);
+    }
+    if (move === "right") {
+      setDateIndex(dateIndex + 1);
+    }
+  };
 
+  const [numReservedObj, setNumReservedObj] = useState(null);
   useEffect(() => {
-    let res = (async () => await fetch(`${origin}/api/calendar?dateIndex=0`))();
+    let res = (async () =>
+      await fetch(`${origin}/api/calendar?dateIndex=${dateIndex}`))();
     res
       .then((r) => r.json())
       .then((r) => {
         setNumReservedObj(r);
       }, 100);
-  }, []);
+  }, [dateIndex]);
 
   return (
     <div className="Home">
@@ -30,7 +40,11 @@ export default function Home() {
         </i>
       </legend>
 
-      <Calendar />
+      <Calendar
+        numReservedObj={numReservedObj}
+        dateIndex={dateIndex}
+        handleClickDate={handleClickDate}
+      />
 
       <div className="flex-buttons">
         {numReservedObj ? (

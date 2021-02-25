@@ -2,35 +2,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import "./Calendar.css";
 import FormatTime from "../../helpers/FormatTime";
-import { useEffect, useState } from "react";
 import ReservationData from "../ReservationData/ReservationData";
-import { origin } from "../../config";
 
-export default function Calendar() {
-  const [dateIndex, setDateIndex] = useState(0);
-  const handleClickDate = (move) => {
-    if (move === "left") {
-      setDateIndex(dateIndex - 1);
+export default function Calendar({
+  numReservedObj,
+  dateIndex,
+  handleClickDate,
+}) {
+  const convertDate = (dateIndex, index) => {
+    if (index === 4) {
+      index -= 0.5;
+    } else if (index > 4) {
+      index -= 1;
     }
-    if (move === "right") {
-      setDateIndex(dateIndex + 1);
-    }
-    setNumReservedObj(null);
+    return new Date(
+      new Date(
+        FormatTime.initialDate(dateIndex).getTime() + 10 ** 8 * index
+      ).toDateString()
+    );
   };
-
-  const [numReservedObj, setNumReservedObj] = useState(null);
-
-  useEffect(() => {
-    setTimeout(() => {
-      let res = (async () =>
-        await fetch(`${origin}/api/calendar?dateIndex=${dateIndex}`))();
-      res
-        .then((r) => r.json())
-        .then((r) => {
-          setNumReservedObj(r);
-        });
-    }, 100);
-  }, [dateIndex]);
 
   return (
     <div className="Calendar">
@@ -55,9 +45,7 @@ export default function Calendar() {
               <FontAwesomeIcon
                 className="arrow-button"
                 icon={faArrowRight}
-                onClick={() => {
-                  handleClickDate("right");
-                }}
+                onClick={() => handleClickDate("right")}
               />
             </th>
           </tr>
@@ -86,9 +74,7 @@ export default function Calendar() {
                   {numReservedObj[yIndex + 1].map((item, index) => (
                     <th key={index}>
                       <ReservationData
-                        selectedDate={new Date(
-                          new Date().getTime() + 10 ** 8 * index
-                        ).toDateString()}
+                        selectedDate={convertDate(dateIndex, index)}
                         timeSlot={yIndex + 1}
                         numberOfPeople={item * 1}
                       />
