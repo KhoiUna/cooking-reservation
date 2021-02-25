@@ -5,7 +5,7 @@ module.exports = async (selectedDate, timeSlot) => {
     const res = await Reservations.findAll({
       attributes: ["first_name", "last_name", "number_of_people"],
       where: {
-        selected_date: new Date(new Date(selectedDate).toLocaleDateString()),
+        selected_date: new Date(new Date(selectedDate).toDateString()),
         time_slot: timeSlot,
       },
     });
