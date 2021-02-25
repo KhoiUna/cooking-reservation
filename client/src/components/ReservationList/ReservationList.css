@@ -14,14 +14,20 @@
   border-radius: 12px;
   border-width: 9px;
   border-style: solid;
-  width: 70%;
-  height: 54%;
+  width: 80%;
+  height: 65%;
   text-align: center;
   background-color: white;
   bottom: 12%;
-  left: 15%;
+  left: 9%;
 }
 
-.ReservationDataPopup .title {
-  margin: 3% 0;
+.ReservationList .title {
+  margin: 2% 0;
+}
+
+.ReservationList .reservations {
+  max-height: 78%;
+  padding: 0 2%;
+  overflow-y: auto;
 }

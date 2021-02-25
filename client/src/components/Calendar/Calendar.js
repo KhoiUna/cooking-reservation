@@ -83,16 +83,21 @@ export default function Calendar() {
                   <th className="reservation-time">
                     {FormatTime.timeSlot(yIndex)}
                   </th>
-                  {numReservedObj[yIndex + 1].map((item, index) => {
-                    if (index === 7) {
-                      return null;
-                    }
-                    return (
-                      <th key={index}>
-                        <ReservationData data={item * 1} />
-                      </th>
-                    );
-                  })}
+                  {numReservedObj[yIndex + 1].map((item, index) => (
+                    <th key={index}>
+                      <ReservationData
+                        selectedDate={
+                          new Date(
+                            new Date(
+                              new Date().getTime() + 10 ** 8 * index
+                            ).toLocaleDateString()
+                          )
+                        }
+                        timeSlot={yIndex + 1}
+                        numberOfPeople={item * 1}
+                      />
+                    </th>
+                  ))}
                   <th></th>
                 </tr>
               ))

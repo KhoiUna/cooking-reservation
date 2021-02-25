@@ -1,11 +1,15 @@
 import { useState } from "react";
 import ReservationList from "../ReservationList/ReservationList";
 
-export default function ReservationData({ data }) {
+export default function ReservationData({
+  selectedDate,
+  timeSlot,
+  numberOfPeople,
+}) {
   let colorObj;
-  if (data > 0 && data < 8) {
+  if (numberOfPeople > 0 && numberOfPeople < 8) {
     colorObj = { color: "blue", backgroundColor: "orange", cursor: "pointer" };
-  } else if (data === 8) {
+  } else if (numberOfPeople === 8) {
     colorObj = { color: "white", backgroundColor: "red", cursor: "pointer" };
   }
 
@@ -21,12 +25,17 @@ export default function ReservationData({ data }) {
     <>
       <div className="reservation-data" onClick={triggerPopup}>
         <p className="reservation-number" style={colorObj}>
-          {data} / 8
+          {numberOfPeople} / 8
         </p>
       </div>
 
-      {showPopup && data > 0 && (
-        <ReservationList data={data} closePopup={closePopup} />
+      {showPopup && numberOfPeople > 0 && (
+        <ReservationList
+          closePopup={closePopup}
+          selectedDate={selectedDate}
+          timeSlot={timeSlot}
+          numberOfPeople={numberOfPeople}
+        />
       )}
     </>
   );
