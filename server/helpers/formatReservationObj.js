@@ -21,8 +21,10 @@ module.exports = (initialDate, res) => {
 
     const dayDiff = getDayDiff(initialDate, reserveDate);
 
-    reservations[i.dataValues.time_slot][dayDiff] =
-      i.dataValues.number_of_people * 1;
+    reservations[i.dataValues.time_slot][dayDiff] = {
+      selectedDate: i.dataValues.selected_date,
+      numberOfPeople: i.dataValues.number_of_people * 1,
+    };
   });
 
   return reservations;

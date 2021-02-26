@@ -9,19 +9,6 @@ export default function Calendar({
   dateIndex,
   handleClickDate,
 }) {
-  const convertDate = (dateIndex, index) => {
-    if (index === 4) {
-      index -= 0.5;
-    } else if (index > 4) {
-      index -= 1;
-    }
-    return new Date(
-      new Date(
-        FormatTime.initialDate(dateIndex).getTime() + 10 ** 8 * index
-      ).toDateString()
-    );
-  };
-
   return (
     <div className="Calendar">
       <table>
@@ -74,9 +61,11 @@ export default function Calendar({
                   {numReservedObj[yIndex + 1].map((item, index) => (
                     <th key={index}>
                       <ReservationData
-                        selectedDate={convertDate(dateIndex, index)}
+                        selectedDate={item.selectedDate}
                         timeSlot={yIndex + 1}
-                        numberOfPeople={item * 1}
+                        numberOfPeople={
+                          item.selectedDate ? item.numberOfPeople * 1 : 0
+                        }
                       />
                     </th>
                   ))}
