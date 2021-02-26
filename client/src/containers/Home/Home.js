@@ -43,6 +43,33 @@ export default function Home() {
           <strong>... / 8</strong>: number of people reserved / number of people
           allowed
         </i>
+        <div style={{ marginTop: "1%" }}>
+          <i>
+            <strong>* Click</strong> on the
+            <span
+              style={{
+                color: "blue",
+                backgroundColor: "orange",
+                fontWeight: "bold",
+                margin: "0 1%",
+              }}
+            >
+              orange boxes
+            </span>
+            or the
+            <span
+              style={{
+                color: "white",
+                backgroundColor: "red",
+                fontWeight: "bold",
+                margin: "0 1%",
+              }}
+            >
+              red boxes
+            </span>
+            to see who has reserved
+          </i>
+        </div>
       </legend>
 
       <Calendar

@@ -23,58 +23,61 @@ export default function ReservationList({
 
   return (
     <>
-      <div className="ReservationList-layer" onClick={closePopup}></div>
-      <div
-        className="ReservationList"
-        style={{ borderColor: numberOfPeople === 8 ? "red" : "orange" }}
-      >
-        <h2 className="title">RESERVATIONS LIST</h2>
+      <div className="ReservationList-layer" onClick={closePopup}>
+        <div
+          className="ReservationList"
+          style={{ borderColor: numberOfPeople === 8 ? "red" : "orange" }}
+        >
+          <h2 className="title">RESERVATIONS LIST</h2>
 
-        {numberOfPeople === 8 && (
-          <h3 style={{ marginBottom: "1%", color: "red", fontSize: "1.6rem" }}>
-            * THIS SLOT IS FULL
-          </h3>
-        )}
+          {numberOfPeople === 8 && (
+            <h3
+              style={{ marginBottom: "1%", color: "red", fontSize: "1.6rem" }}
+            >
+              * THIS SLOT IS FULL
+            </h3>
+          )}
 
-        <div className="reservations">
-          <table>
-            <thead>
-              <tr>
-                <th>
-                  <h3>Name</h3>
-                </th>
-                <th>
-                  <h3>Number of people</h3>
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {reservationList.length !== 0 ? (
-                reservationList.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <th className="reservation-time">
-                        <p>
-                          {item.first_name.toUpperCase() +
-                            item.last_name.toUpperCase()}
-                        </p>
-                      </th>
-                      <th key={index}>
-                        <p>{item.number_of_people || 8}</p>
-                      </th>
-                    </tr>
-                  );
-                })
-              ) : (
+          <div className="reservations">
+            <table>
+              <thead>
                 <tr>
-                  <th colSpan={2} style={{ textAlign: "center" }}>
-                    <h3 style={{ padding: "1%" }}>Loading...</h3>
+                  <th>
+                    <h3>Name</h3>
+                  </th>
+                  <th>
+                    <h3>Number of people</h3>
                   </th>
                 </tr>
-              )}
-            </tbody>
-          </table>
+              </thead>
+
+              <tbody>
+                {reservationList.length !== 0 ? (
+                  reservationList.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <th className="reservation-time">
+                          <p>
+                            {item.first_name.toUpperCase() +
+                              item.last_name.toUpperCase()}
+                          </p>
+                        </th>
+                        <th key={index}>
+                          <p>{item.number_of_people || 8}</p>
+                        </th>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <tr>
+                    <th colSpan={2} style={{ textAlign: "center" }}>
+                      <h3 style={{ padding: "1%" }}>Loading...</h3>
+                    </th>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </>
