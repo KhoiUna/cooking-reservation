@@ -47,8 +47,8 @@ export default function ReserveForm() {
   };
 
   const [data, setData] = useState({
-    firstName: "",
-    lastName: "",
+    firstName: localStorage.getItem("firstName") || "",
+    lastName: localStorage.getItem("lastName") || "",
     numberOfPeople: "",
   });
   const handleChange = ({ target }) => {
@@ -79,7 +79,11 @@ export default function ReserveForm() {
       });
 
       if (res.ok === true) {
+        localStorage.setItem("firstName", dataObj.firstName);
+        localStorage.setItem("lastName", dataObj.lastName);
+
         setPopUp(true);
+
         setData({
           firstName: "",
           lastName: "",
@@ -231,7 +235,12 @@ export default function ReserveForm() {
         </Container>
       </form>
 
-      {popUp && <Popup fromForm="reserve" />}
+      {popUp && (
+        <Popup
+          fromForm="reserve"
+          firstName={localStorage.getItem("firstName")}
+        />
+      )}
 
       <Footer />
     </>
