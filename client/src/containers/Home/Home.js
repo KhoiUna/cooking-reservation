@@ -40,7 +40,7 @@ export default function Home() {
 
       <legend>
         <i>
-          <strong>... / 8</strong>: number of people reserved / number of people
+          <strong>8 / 8</strong>: number of people reserved / number of people
           allowed
         </i>
         <div style={{ marginTop: "1%" }}>

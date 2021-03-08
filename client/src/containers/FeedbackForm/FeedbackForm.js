@@ -68,7 +68,9 @@ export default function FeedbackForm() {
               spacing={3}
             >
               <h2 style={{ paddingTop: "3%" }}>FEEDBACK</h2>
-              <h3 className="notice">* This part is for complaints</h3>
+              <h3 className="notice">
+                * If you have any complaints, feel free to send a feedback!
+              </h3>
 
               <Grid item xs={12} sm={6}>
                 <TextField

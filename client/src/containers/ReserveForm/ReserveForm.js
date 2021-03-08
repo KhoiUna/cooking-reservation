@@ -117,6 +117,12 @@ export default function ReserveForm() {
               spacing={3}
             >
               <h2 className="reserve-notice">PLEASE FILL IN ALL FIELDS</h2>
+              <h3
+                className="notice"
+                style={{ color: "#2aff10", padding: "2% 1%" }}
+              >
+                * Tip: do not close this tab for faster reserving next time!
+              </h3>
 
               <Grid item xs={12} sm={6}>
                 <TextField
