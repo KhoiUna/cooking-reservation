@@ -119,7 +119,7 @@ export default function ReserveForm() {
               <h2 className="reserve-notice">PLEASE FILL IN ALL FIELDS</h2>
               <h3
                 className="notice"
-                style={{ color: "#2aff10", padding: "2% 1%" }}
+                style={{ color: "#00e412", padding: "2% 1em" }}
               >
                 * Tip: do not close this tab for faster reserving next time!
               </h3>
