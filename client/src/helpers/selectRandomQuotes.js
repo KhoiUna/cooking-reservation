@@ -6,9 +6,11 @@ export default function selectRandomQuotes(firstName) {
     3: ["You will be forever remembered, ", firstName, "!"],
     4: [firstName, " and me will fight COVID together!"],
     5: ["Ms. Cala is thankful for you, ", firstName, "!"],
-    6: ["Gracias, ", firstName, "!"],
-    7: ["谢谢 (thanks)", firstName, "!"],
-    8: ["ありがとう (thanks), ", firstName, "!"],
+    6: ["Gracias (Spanish: thanks), ", firstName, "!"],
+    7: ["谢谢 (Chinese: thanks), ", firstName, "!"],
+    8: ["ありがとう (Japanese: thanks), ", firstName, "!"],
+    9: ["धन्यवाद  (Indian: thanks), ", firstName, "!"],
+    10: ["감사합니다  (Korean: thanks), ", firstName, "!"],
   };
 
   const randomIndex = Math.floor(Math.random() * Object.keys(quotes).length);
