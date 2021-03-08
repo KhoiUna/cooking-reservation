@@ -4,7 +4,7 @@ export default function selectRandomQuotes(firstName) {
     1: [firstName, ", you look great today!"],
     2: [firstName, ", you are making Rice Hall better!"],
     3: ["You will be forever remembered, ", firstName, "!"],
-    4: [firstName, " and me will fight COVID together!"],
+    4: [firstName, " and I will fight COVID together!"],
     5: ["Ms. Cala is thankful for you, ", firstName, "!"],
     6: ["Gracias (Spanish: thanks), ", firstName, "!"],
     7: ["谢谢 (Chinese: thanks), ", firstName, "!"],
