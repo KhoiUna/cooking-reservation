@@ -11,13 +11,7 @@ const PORT = process.env.PORT || 5000;
 app.use(compression());
 app.use(helmet());
 app.use(express.json());
-app.use(
-  cors({
-    origin: origin,
-    optionsSuccessStatus: 200,
-    credentials: true,
-  })
-);
+app.use(cors());
 
 //Routes
 const calendarRoute = require("./routes/calendar-route");
