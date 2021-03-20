@@ -2,7 +2,7 @@ module.exports = (initialDate, res) => {
   const reservations = {};
 
   [...new Array(24).fill(null)].map((i, index) => {
-    reservations[index + 1] = [0, 0, 0, 0, 0, 0, 0];
+    reservations[index] = [0, 0, 0, 0, 0, 0, 0];
   });
 
   if (res.length === 0) return reservations;

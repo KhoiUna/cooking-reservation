@@ -11,4 +11,4 @@ module.exports = ({
   numberOfPeople <= 8 &&
   new Date(selectedDate.toLocaleDateString()) >=
     new Date(new Date().toLocaleDateString()) &&
-  timeSlot;
+  timeSlot !== false;
