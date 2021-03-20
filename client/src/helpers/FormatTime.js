@@ -3,16 +3,13 @@ module.exports = {
     return new Date(Date.now() + 10 ** 8 * 6 * index);
   },
   timeSlot(time) {
-    if (time + 1 < 12) {
-      return `${time + 1}am`;
+    if (time < 12) {
+      return `${time}am`;
     }
-    if (time - 11 === 0) {
+    if (time - 12 === 0) {
       return "12pm";
     }
-    if (time - 11 === 12) {
-      return "0am";
-    }
-    return `${time - 11}pm`;
+    return `${time - 12}pm`;
   },
   month(index) {
     const monthNames = [

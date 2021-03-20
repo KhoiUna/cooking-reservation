@@ -58,11 +58,11 @@ export default function Calendar({
                   <th className="reservation-time">
                     {FormatTime.timeSlot(yIndex)}
                   </th>
-                  {numReservedObj[yIndex + 1].map((item, index) => (
+                  {numReservedObj[yIndex].map((item, index) => (
                     <th key={index}>
                       <ReservationData
                         selectedDate={item.selectedDate}
-                        timeSlot={yIndex + 1}
+                        timeSlot={yIndex}
                         numberOfPeople={
                           item.selectedDate ? item.numberOfPeople * 1 : 0
                         }

@@ -192,7 +192,7 @@ export default function ReserveForm() {
                     className={classes.selectEmpty}
                   >
                     {[...Array(24).keys()].map((time, index) => (
-                      <MenuItem value={time + 1} key={index}>
+                      <MenuItem value={time} key={index}>
                         {FormatTime.timeSlot(time)}
                       </MenuItem>
                     ))}
@@ -215,7 +215,7 @@ export default function ReserveForm() {
                 numberOfPeople <= 8 &&
                 new Date(new Date(dataObj.selectedDate).toLocaleDateString()) >=
                   new Date(new Date().toLocaleDateString()) &&
-                dataObj.timeSlot ? (
+                dataObj.timeSlot !== false ? (
                   <Button
                     variant="contained"
                     color="primary"
