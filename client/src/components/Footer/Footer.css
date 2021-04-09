@@ -2,6 +2,12 @@ footer {
   padding: 2% 0;
 }
 
+footer a {
+  color: red;
+  text-decoration: none;
+  border-bottom: 3px dashed black;
+}
+
 footer p {
   font-weight: bold;
   font-size: medium;
