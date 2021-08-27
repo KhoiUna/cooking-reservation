@@ -1,6 +1,7 @@
 header {
   background-color: #fbc6d0;
   margin-bottom: 3%;
+  padding: 1rem;
 }
 
 header a {
@@ -9,7 +10,6 @@ header a {
 
 header h1 {
   color: #fb4c1f;
-  padding: 3%;
 }
 
 header #header-icon {
