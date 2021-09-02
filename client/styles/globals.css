@@ -112,7 +112,7 @@ header #header-icon {
 
 .Calendar table .arrow-button {
   cursor: pointer;
-  font-size: larger;
+  width: 1rem;
 }
 
 .Calendar table #left-arrow {
