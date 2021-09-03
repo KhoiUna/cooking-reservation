@@ -219,6 +219,7 @@ form {
   color: red;
   font-style: italic;
   padding: 1% 4%;
+  text-align: "center";
 }
 
 textarea {
