@@ -216,9 +216,9 @@ form {
 
 /* Style Feedback page */
 .notice {
-  color: red;
+  color: #ff0000;
   font-style: italic;
-  padding: 1% 4%;
+  margin: 1rem 1.5rem;
   text-align: "center";
 }
 
