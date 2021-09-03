@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { origin } from "../config/config";
 import Calendar from "../components/Calendar/Calendar";
 import Layout from "../containers/layout";
+import homeStyles from "../styles/home.module.css";
 
 export default function Home() {
   const [dateIndex, setDateIndex] = useState(0);
@@ -78,6 +79,12 @@ export default function Home() {
             </p>
           )}
         </div>
+
+        <Link href="/sponsor">
+          <p className={homeStyles.link_to_sponsor}>
+            {">>"} Check out our sponsorships
+          </p>
+        </Link>
       </div>
     </Layout>
   );

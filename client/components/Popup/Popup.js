@@ -9,7 +9,7 @@ export default function Popup({ fromForm, firstName }) {
       ) : (
         <h2 className="greet">Thanks for your feedback!</h2>
       )}
-      <img src={"/thankyou.jpg"} alt="Thank you" width="200" />
+      <img src="/thankyou.jpg" alt="Thank you" width="200" />
       <br />
 
       <Link href="/">
