@@ -1,9 +1,13 @@
-.link_to_sponsor {
+.home_nav {
   text-align: left;
-  margin: 1.5rem 0 1rem 1rem;
+  margin: 2rem 0 1rem 4.5%;
   cursor: pointer;
   font-size: 1.2rem;
   font-weight: bold;
   text-decoration: underline;
   color: #640ba8;
+}
+
+.home_nav_li {
+  margin: 0.7rem 0;
 }

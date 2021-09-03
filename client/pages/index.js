@@ -37,6 +37,16 @@ export default function Home() {
       <div className="App">
         <h2>RESERVE YOUR COOKING TIME BELOW</h2>
 
+        <nav className={homeStyles.home_nav}>
+          <ul>
+            <li className={homeStyles.home_nav_li}>
+              <Link href="/sponsor">
+                <p>{">>"} Check out our sponsorships</p>
+              </Link>
+            </li>
+          </ul>
+        </nav>
+
         <legend className="legend-home">
           <i>
             <strong>8 / 8</strong>: number of people reserved / number of people
@@ -79,12 +89,6 @@ export default function Home() {
             </p>
           )}
         </div>
-
-        <Link href="/sponsor">
-          <p className={homeStyles.link_to_sponsor}>
-            {">>"} Check out our sponsorships
-          </p>
-        </Link>
       </div>
     </Layout>
   );
