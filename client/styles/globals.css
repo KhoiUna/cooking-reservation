@@ -32,7 +32,7 @@ header h1 {
 }
 
 header #header-icon {
-  padding-right: 1%;
+  padding-right: 1rem;
   width: 0.8125em;
 }
 
@@ -97,7 +97,7 @@ header #header-icon {
 .Calendar table thead {
   background-color: #640ba8;
   border-bottom: 3px solid black;
-  color: #fff;
+  color: #db9f11;
 }
 
 .Calendar table thead .thead-title th {
@@ -198,6 +198,7 @@ header #header-icon {
 
 .ReservationList .reservations table thead th {
   text-align: center;
+  color: #db9f11;
 }
 
 /* Style Reserve page */
