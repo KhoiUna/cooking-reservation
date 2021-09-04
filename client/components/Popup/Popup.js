@@ -26,24 +26,23 @@ export default function Popup({ fromForm, firstName }) {
         <button id="home-button">Go back to home</button>
       </Link>
 
-      <Script
-        strategy="beforeInteractive"
-        src="https://unpkg.com/@gobistories/gobi-web-integration@^6.11.1"
-      />
       <Script id="show-stories">
         {`new gobi.Bubbles({
             container: ".gobi-stories",
+            bubbleSize: "200px",            
+            animatedBubble: "true",
+            color: "#aa67dd",
+            titleFontSize: "2rem",
+            titleFontWeight: "bold",
             stories: [
               {
                 id: "gbyvv",
                 title: "Sponsors",
               },
             ],
-            bubbleSize: "200px",            
-            animatedBubble: "true",
-            color: "#aa67dd",
-            titleFontSize: "2rem",
-            titleFontWeight: "bold",
+            playerOptions: {
+              autoStartWithSound: "true",
+            },
           });`}
       </Script>
     </div>

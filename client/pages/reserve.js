@@ -20,6 +20,7 @@ import {
 import { useEffect, useState } from "react";
 import { origin } from "../config/config";
 import Layout from "../containers/layout";
+import Script from "next/script";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -255,6 +256,11 @@ export default function Reserve() {
           firstName={localStorage.getItem("firstName")}
         />
       )}
+
+      <Script
+        strategy="beforeInteractive"
+        src="https://unpkg.com/@gobistories/gobi-web-integration@^6.11.1"
+      />
     </Layout>
   );
 }
