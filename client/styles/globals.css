@@ -232,10 +232,9 @@ textarea {
 
 /* Style Popup */
 .Popup {
-  z-index: 100;
+  z-index: 1;
   position: absolute;
   border: 3px black solid;
-  border-radius: 12px;
   width: 100vw;
   height: 100vh;
   text-align: center;
@@ -245,7 +244,6 @@ textarea {
 
 .Popup .greet {
   padding: 3% 0;
-  border-radius: 9px;
   background-color: greenyellow;
 }
 .Popup #home-button {
