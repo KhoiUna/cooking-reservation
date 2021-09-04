@@ -232,16 +232,15 @@ textarea {
 
 /* Style Popup */
 .Popup {
-  z-index: 1000;
+  z-index: 100;
   position: absolute;
   border: 3px black solid;
   border-radius: 12px;
-  width: 50%;
-  height: 54%;
+  width: 100vw;
+  height: 100vh;
   text-align: center;
-  background-color: white;
-  bottom: 28%;
-  left: 23%;
+  background-color: #fff;
+  top: 0;
 }
 
 .Popup .greet {
@@ -251,26 +250,18 @@ textarea {
 }
 .Popup #home-button {
   margin: 2% 0;
-  background-color: #fbc6d0;
+  background-color: #46166b;
+  color: #fff;
   font-size: medium;
   font-weight: bold;
-  padding: 5px;
+  padding: 0.8rem;
   cursor: pointer;
+  border-radius: 10px;
+  outline: none;
 }
-
-@media only screen and (max-width: 670px) {
-  .Popup {
-    z-index: 1000;
-    position: absolute;
-    border: 3px black solid;
-    border-radius: 12px;
-    width: 250px;
-    height: 54%;
-    text-align: center;
-    background-color: white;
-    bottom: 20%;
-    left: 19%;
-  }
+.Popup #home-button:hover {
+  box-shadow: 0 0.5rem 1rem 0.5rem rgba(0, 0, 0, 0.15);
+  padding: 0.9rem;
 }
 
 /* Style footer */

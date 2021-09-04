@@ -14,7 +14,7 @@ export default function Sponsor({}) {
   return (
     <Layout componentName="Sponsor">
       <h1 className={sponsorStyles.sponsor_title}>
-        Thanks to our sponsorship!
+        Thanks to our sponsorships!
         <div style={{ margin: "0.5rem 0" }}>
           Check out their Instagram page!
         </div>
