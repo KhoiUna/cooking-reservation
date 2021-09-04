@@ -1,8 +1,15 @@
 import Link from "next/link";
 import selectRandomQuotes from "../../helpers/selectRandomQuotes";
 import Script from "next/script";
+import { useEffect, useState } from "react";
 
 export default function Popup({ fromForm, firstName }) {
+  const randomizeSponsor = (max) => Math.floor(Math.random() * max);
+  const [showSponsor, setShowSponsor] = useState(false);
+  useEffect(() => {
+    setShowSponsor(randomizeSponsor(2) === 1);
+  }, []);
+
   return (
     <div className="Popup">
       {fromForm === "reserve" ? (
@@ -11,26 +18,38 @@ export default function Popup({ fromForm, firstName }) {
         <h2 className="greet">Thanks for your feedback!</h2>
       )}
 
-      <h3 className="gobi-stories-load" style={{ margin: "5rem 1rem" }}>
-        Please wait to see our sponsors...
-      </h3>
-      <div
-        className="gobi-stories"
-        data-gobi-stories="gbyvv"
-        data-gobi-color="#aa67dd"
-        data-gobi-bubble-size="200px"
-        data-gobi-animated-bubble="true"
-        data-gobi-auto-start-with-sound="true"
-        style={{ zIndex: 2 }}
-      ></div>
+      {showSponsor ? (
+        <>
+          <h2 className="gobi-stories-load" style={{ margin: "3rem 1rem" }}>
+            Please wait to see our sponsors...
+          </h2>
+          <div
+            className="gobi-stories"
+            data-gobi-stories="gbyvv"
+            data-gobi-color="#aa67dd"
+            data-gobi-bubble-size="200px"
+            data-gobi-animated-bubble="true"
+            data-gobi-auto-start-with-sound="true"
+            style={{ zIndex: 2 }}
+          ></div>
+        </>
+      ) : (
+        <img
+          src="/thankyou.jpg"
+          alt="Thank you"
+          width={200}
+          style={{ margin: "3rem 1rem" }}
+        />
+      )}
 
       <br />
-
       <Link href="/">
-        <button id="home-button">Go back to home</button>
+        <button id="home-button" hidden={showSponsor}>
+          Go back to home
+        </button>
       </Link>
 
-      <Script id="show-stories">
+      <Script>
         {`new gobi.Bubbles({
             container: ".gobi-stories",
             bubbleSize: "200px",            
@@ -41,16 +60,17 @@ export default function Popup({ fromForm, firstName }) {
             stories: [
               {
                 id: "gbyvv",
-                title: "Sponsors",
-              },
+                title: "Click to watch",
+              },            
             ],
             playerOptions: {
               autoStartWithSound: "true",
             },
             on: {
               loaded: () => {
-                document.querySelector(".gobi-stories-load").innerText = "Click to watch";
-                document.querySelector(".gobi-stories-load").style.margin = "2rem 1rem";
+                document.querySelector(".gobi-stories-load").innerText = "Sponsors";
+                document.querySelector(".gobi-stories-load").style.margin = "2rem 1rem 1rem 1rem";
+                document.querySelector("#home-button").hidden = false;
               },
             }
           });`}
