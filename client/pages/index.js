@@ -20,16 +20,15 @@ export default function Home() {
   const [firstFetch, setFirstFetch] = useState(true);
   const [numReservedObj, setNumReservedObj] = useState(null);
   useEffect(() => {
-    setTimeout(() => {
-      let res = (async () =>
-        await fetch(`${origin}/api/calendar?dateIndex=${dateIndex}`))();
-      res
-        .then((r) => r.json())
-        .then((r) => {
-          setNumReservedObj(r);
-          setFirstFetch(false);
-        });
-    }, 100);
+    const res = (async () =>
+      await fetch(`${origin}/api/calendar?dateIndex=${dateIndex}`))();
+    res
+      .then((r) => r.json())
+      .then((r) => {
+        setNumReservedObj(r);
+        setFirstFetch(false);
+      })
+      .catch((err) => console.error("Error fetching reservations"));
   }, [dateIndex]);
 
   return (
