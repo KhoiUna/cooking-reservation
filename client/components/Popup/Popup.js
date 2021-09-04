@@ -10,7 +10,10 @@ export default function Popup({ fromForm, firstName }) {
       ) : (
         <h2 className="greet">Thanks for your feedback!</h2>
       )}
-      {/* <img src="/thankyou.jpg" alt="Thank you" width="200" /> */}
+
+      <h3 className="gobi-stories-load" style={{ margin: "5rem 1rem" }}>
+        Please wait to see our sponsors...
+      </h3>
       <div
         className="gobi-stories"
         data-gobi-stories="gbyvv"
@@ -18,6 +21,7 @@ export default function Popup({ fromForm, firstName }) {
         data-gobi-bubble-size="200px"
         data-gobi-animated-bubble="true"
         data-gobi-auto-start-with-sound="true"
+        style={{ zIndex: 2 }}
       ></div>
 
       <br />
@@ -43,6 +47,12 @@ export default function Popup({ fromForm, firstName }) {
             playerOptions: {
               autoStartWithSound: "true",
             },
+            on: {
+              loaded: () => {
+                document.querySelector(".gobi-stories-load").innerText = "Click to watch";
+                document.querySelector(".gobi-stories-load").style.margin = "2rem 1rem";
+              },
+            }
           });`}
       </Script>
     </div>

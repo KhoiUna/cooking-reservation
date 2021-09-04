@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Container, Paper, Grid, TextField, Button } from "@material-ui/core";
 import { origin } from "../config/config";
 import Layout from "../containers/layout";
+import Script from "next/script";
 
 export default function FeedbackForm() {
   const [data, setData] = useState({
@@ -52,14 +53,16 @@ export default function FeedbackForm() {
             <Grid
               container
               direction="column"
-              justify="center"
+              justifyContent="center"
               alignItems="center"
               spacing={3}
             >
               <h2 style={{ paddingTop: "3%" }}>FEEDBACK</h2>
-              <h3 className="notice">
-                * If you have any complaints, feel free to send a feedback!
-              </h3>
+              <div className="notice">
+                <h3>
+                  * If you have any complaints, feel free to send a feedback!
+                </h3>
+              </div>
 
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -74,8 +77,8 @@ export default function FeedbackForm() {
 
               <Grid item xs={12} sm={6}>
                 <TextField
-                  rows={5}
-                  rowsMax={5}
+                  minrows={5}
+                  maxRows={5}
                   aria-label="Feedback"
                   placeholder="Type your feedback"
                   name="feedback"
@@ -120,6 +123,11 @@ export default function FeedbackForm() {
       </form>
 
       {popUp && <Popup fromForm="feedback" />}
+
+      <Script
+        strategy="beforeInteractive"
+        src="https://unpkg.com/@gobistories/gobi-web-integration@^6.11.1"
+      />
     </Layout>
   );
 }
