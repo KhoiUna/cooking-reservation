@@ -16,8 +16,10 @@ export default function selectAudioQuotes(fromForm, index) {
 
   const synth = window.speechSynthesis;
 
-  let voices = synth.getVoices();
-  voices = voices.filter((voice) => voice.lang === quotes[index][0].lang);
+  const voices = synth.getVoices();
+  const langVoices = voices.filter(
+    (voice) => voice.lang === quotes[index][0].lang
+  );
 
   const utterThis = new SpeechSynthesisUtterance(
     fromForm !== "feedback"
@@ -25,7 +27,10 @@ export default function selectAudioQuotes(fromForm, index) {
       : "Thanks for your feedback!"
   );
 
-  utterThis.voice = voices[Math.floor(Math.random() * voices.length)]; // select randomly from available voices array
+  utterThis.voice =
+    langVoices.length !== 0
+      ? langVoices[Math.floor(Math.random() * langVoices.length)]
+      : voices[Math.floor(Math.random() * voices.length)]; // select randomly from available voices array
   utterThis.pitch = 1;
   utterThis.rate = 1;
 
