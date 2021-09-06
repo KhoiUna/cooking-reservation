@@ -22,13 +22,14 @@ export default function selectAudioQuotes(fromForm, index) {
   );
 
   let utterThis;
-  if (langVoices.length !== 0 && langVoices[0].lang === "en-US") {
+  if (quotes[index][0].lang === "en-US") {
     utterThis = new SpeechSynthesisUtterance(
       fromForm !== "feedback"
         ? quotes[index][0].speech
         : "Thanks for your feedback!"
     );
-  } else {
+  }
+  if (quotes[index][0].lang !== "en-US" && langVoices.length === 0) {
     utterThis = new SpeechSynthesisUtterance(
       fromForm !== "feedback"
         ? "Thanks for reserving!"
