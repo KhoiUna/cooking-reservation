@@ -11,7 +11,7 @@ export default function selectAudioQuotes(fromForm, index) {
     8: [{ speech: "ありがとう", lang: "ja-JP" }],
     9: [{ speech: "धन्यवाद", lang: "hi-IN" }],
     10: [{ speech: "감사 해요", lang: "ko-KR" }],
-    11: [{ speech: "Cảm ơn", lang: "en-US" }],
+    11: [{ speech: "Cam on", lang: "en-US" }],
   };
 
   const synth = window.speechSynthesis;
