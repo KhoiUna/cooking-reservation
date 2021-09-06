@@ -4,7 +4,7 @@ export default function selectAudioQuotes(fromForm, index) {
     1: [{ speech: "you look great today!", lang: "en-US" }],
     2: [{ speech: "you are making Rice Hall better!", lang: "en-US" }],
     3: [{ speech: "You will be forever remembered", lang: "en-US" }],
-    4: [{ speech: "We will fight co-vidd together", lang: "en-US" }],
+    4: [{ speech: "We will fight covid together", lang: "en-US" }],
     5: [{ speech: "Ms. Cala is thankful for you", lang: "en-US" }],
     6: [{ speech: "Gracias", lang: "es-ES" }],
     7: [{ speech: "谢谢", lang: "zh-CN" }],
