@@ -22,7 +22,7 @@ export default function selectAudioQuotes(fromForm, index) {
   );
 
   let utterThis;
-  if (langVoices.length !== 0 && langVoices[0].lang !== "en-US") {
+  if (langVoices.length !== 0 && langVoices[0].lang === "en-US") {
     utterThis = new SpeechSynthesisUtterance(
       fromForm !== "feedback"
         ? quotes[index][0].speech
