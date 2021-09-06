@@ -1,4 +1,4 @@
-export default function selectAudioQuotes(index) {
+export default function selectAudioQuotes(fromForm, index) {
   const quotes = {
     0: ["thanks for reserving!"],
     1: ["you look great today!"],
@@ -9,10 +9,22 @@ export default function selectAudioQuotes(index) {
     6: ["Gracias"],
     7: ["shia shia"],
     8: ["arigato gozai mas"],
-    9: ["dhanyavaad"],
-    10: ["gam sah ah knee duh"],
+    9: ["dhanyaavod"],
+    10: ["gam sah hae yoh"],
     11: ["Cảm ơn"],
   };
 
-  return quotes[index];
+  const synth = window.speechSynthesis;
+  const voices = synth.getVoices();
+  const utterThis = new SpeechSynthesisUtterance(
+    fromForm !== "feedback" ? quotes[index] : "Thanks for your feedback!"
+  );
+
+  utterThis.voice = voices[Math.floor(Math.random() * voices.length)]; // select randomly from available voices array
+  utterThis.pitch = 2;
+  utterThis.rate = 1.2;
+
+  synth.speak(utterThis);
+
+  return;
 }

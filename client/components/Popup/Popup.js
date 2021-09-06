@@ -2,6 +2,7 @@ import Link from "next/link";
 import selectRandomQuotes from "../../helpers/selectRandomQuotes";
 import Script from "next/script";
 import { useEffect, useState } from "react";
+import selectAudioQuotes from "../../helpers/selectAudioQuotes";
 
 export default function Popup({ fromForm, firstName }) {
   const randomizeSponsor = (max) => Math.floor(Math.random() * max);
@@ -10,14 +11,23 @@ export default function Popup({ fromForm, firstName }) {
     setShowSponsor(randomizeSponsor(2) === 1);
   }, []);
 
+  const [quote, setQuote] = useState("");
+  const [randomIndex, setRandomIndex] = useState(null);
+  useEffect(() => {
+    const { quote, randomIndex } = selectRandomQuotes(firstName);
+    setQuote(quote);
+    setRandomIndex(randomIndex);
+  }, []);
+
+  const speak = () => selectAudioQuotes(fromForm, randomIndex);
+
   return (
     <div className="Popup">
       {fromForm === "reserve" ? (
-        <h2 className="greet">{selectRandomQuotes(firstName)}</h2>
+        <h2 className="greet">{quote}</h2>
       ) : (
         <h2 className="greet">Thanks for your feedback!</h2>
       )}
-
       {showSponsor ? (
         <>
           <h2 className="gobi-stories-load" style={{ margin: "3rem 1rem" }}>
@@ -41,14 +51,13 @@ export default function Popup({ fromForm, firstName }) {
           style={{ margin: "3rem 1rem" }}
         />
       )}
-
       <br />
+
       <Link href="/">
-        <button id="home-button" hidden={showSponsor}>
+        <button id="home-button" hidden={showSponsor} onClick={speak}>
           Go back to home
         </button>
       </Link>
-
       <Script>
         {`new gobi.Bubbles({
             container: ".gobi-stories",

@@ -10,12 +10,12 @@ export default function selectRandomQuotes(firstName) {
     7: ["谢谢 (Chinese: thanks), ", firstName, "!"],
     8: ["ありがとう (Japanese: thanks), ", firstName, "!"],
     9: ["धन्यवाद  (Indian: thanks), ", firstName, "!"],
-    10: ["감사합니다  (Korean: thanks), ", firstName, "!"],
+    10: ["감사 해요 (Korean: thanks), ", firstName, "!"],
     11: ["Cảm ơn  (Vietnamese: thanks), ", firstName, "!"],
   };
 
   const randomIndex = Math.floor(Math.random() * Object.keys(quotes).length);
   const quote = quotes[randomIndex];
 
-  return quote.join("");
+  return { quote: quote.join(""), randomIndex };
 }
