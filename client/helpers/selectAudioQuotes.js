@@ -15,7 +15,11 @@ export default function selectAudioQuotes(fromForm, index) {
   };
 
   const synth = window.speechSynthesis;
-  const voices = synth.getVoices();
+
+  // Only keep US voice
+  let voices = synth.getVoices();
+  voices = voices.filter((voice) => voice.lang === "en-US");
+
   const utterThis = new SpeechSynthesisUtterance(
     fromForm !== "feedback" ? quotes[index] : "Thanks for your feedback!"
   );
