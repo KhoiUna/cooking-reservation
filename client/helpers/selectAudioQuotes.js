@@ -21,11 +21,20 @@ export default function selectAudioQuotes(fromForm, index) {
     (voice) => voice.lang === quotes[index][0].lang
   );
 
-  const utterThis = new SpeechSynthesisUtterance(
-    fromForm !== "feedback"
-      ? quotes[index][0].speech
-      : "Thanks for your feedback!"
-  );
+  let utterThis;
+  if (langVoices.length !== 0) {
+    utterThis = new SpeechSynthesisUtterance(
+      fromForm !== "feedback"
+        ? quotes[index][0].speech
+        : "Thanks for your feedback!"
+    );
+  } else {
+    utterThis = new SpeechSynthesisUtterance(
+      fromForm !== "feedback"
+        ? "Thanks for reserving!"
+        : "Thanks for your feedback!"
+    );
+  }
 
   utterThis.voice =
     langVoices.length !== 0
