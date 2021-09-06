@@ -1,27 +1,26 @@
 export default function selectAudioQuotes(fromForm, index) {
   const quotes = {
-    0: ["thanks for reserving!"],
-    1: ["you look great today!"],
-    2: ["you are making Rice Hall better!"],
-    3: ["You will be forever remembered"],
-    4: ["We will fight co-vidd together"],
-    5: ["Ms. Cala is thankful for you"],
-    6: ["Gracias"],
-    7: ["shia shia"],
-    8: ["arigato gozai mas"],
-    9: ["dhanyaavod"],
-    10: ["gam sah hae yoh"],
-    11: ["Cảm ơn"],
+    0: [{ speech: "thanks for reserving!", lang: "en-US" }],
+    1: [{ speech: "you look great today!", lang: "en-US" }],
+    2: [{ speech: "you are making Rice Hall better!", lang: "en-US" }],
+    3: [{ speech: "You will be forever remembered", lang: "en-US" }],
+    4: [{ speech: "We will fight co-vidd together", lang: "en-US" }],
+    5: [{ speech: "Ms. Cala is thankful for you", lang: "en-US" }],
+    6: [{ speech: "Gracias", lang: "es-ES" }],
+    7: [{ speech: "谢谢", lang: "zh-CN" }],
+    8: [{ speech: "ありがとう", lang: "ja-JP" }],
+    9: [{ speech: "धन्यवाद", lang: "hi-IN" }],
+    10: [{ speech: "감사 해요", lang: "ko-KR" }],
+    11: [{ speech: "Cảm ơn", lang: "en-US" }],
   };
 
   const synth = window.speechSynthesis;
 
-  // Only keep US voice
   let voices = synth.getVoices();
-  voices = voices.filter((voice) => voice.lang === "en-US");
+  voices = voices.filter((voice) => voice.lang === quotes[index].lang);
 
   const utterThis = new SpeechSynthesisUtterance(
-    fromForm !== "feedback" ? quotes[index] : "Thanks for your feedback!"
+    fromForm !== "feedback" ? quotes[index].speech : "Thanks for your feedback!"
   );
 
   utterThis.voice = voices[Math.floor(Math.random() * voices.length)]; // select randomly from available voices array
