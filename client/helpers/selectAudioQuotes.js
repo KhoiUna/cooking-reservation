@@ -17,10 +17,12 @@ export default function selectAudioQuotes(fromForm, index) {
   const synth = window.speechSynthesis;
 
   let voices = synth.getVoices();
-  voices = voices.filter((voice) => voice.lang === quotes[index].lang);
+  voices = voices.filter((voice) => voice.lang === quotes[index][0].lang);
 
   const utterThis = new SpeechSynthesisUtterance(
-    fromForm !== "feedback" ? quotes[index].speech : "Thanks for your feedback!"
+    fromForm !== "feedback"
+      ? quotes[index][0].speech
+      : "Thanks for your feedback!"
   );
 
   utterThis.voice = voices[Math.floor(Math.random() * voices.length)]; // select randomly from available voices array
