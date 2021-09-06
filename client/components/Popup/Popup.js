@@ -15,6 +15,7 @@ export default function Popup({ fromForm, firstName }) {
   const [randomIndex, setRandomIndex] = useState(null);
   useEffect(() => {
     const { quote, randomIndex } = selectRandomQuotes(firstName);
+
     setQuote(quote);
     setRandomIndex(randomIndex);
   }, []);

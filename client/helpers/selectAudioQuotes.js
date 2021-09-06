@@ -21,8 +21,8 @@ export default function selectAudioQuotes(fromForm, index) {
   );
 
   utterThis.voice = voices[Math.floor(Math.random() * voices.length)]; // select randomly from available voices array
-  utterThis.pitch = 2;
-  utterThis.rate = 1.2;
+  utterThis.pitch = 1;
+  utterThis.rate = 1;
 
   synth.speak(utterThis);
 
