@@ -22,19 +22,26 @@ export default function selectAudioQuotes(fromForm, index) {
   );
 
   let utterThis;
+  // If the form is WebGLTransformFeedback, only speak English
+  if (fromForm === "feedback") {
+    utterThis = new SpeechSynthesisUtterance("Thanks for your feedback!");
+    utterThis.voice = voices.filter((voice) => voice.lang === "en-US")[
+      Math.floor(Math.random() * voices.length)
+    ];
+    utterThis.pitch = 1;
+    utterThis.rate = 1;
+
+    synth.speak(utterThis);
+
+    return;
+  }
+
+  // Else, speak different languages
   if (quotes[index][0].lang === "en-US" || langVoices.length !== 0) {
-    utterThis = new SpeechSynthesisUtterance(
-      fromForm !== "feedback"
-        ? quotes[index][0].speech
-        : "Thanks for your feedback!"
-    );
+    utterThis = new SpeechSynthesisUtterance(quotes[index][0].speech);
   }
   if (quotes[index][0].lang !== "en-US" && langVoices.length === 0) {
-    utterThis = new SpeechSynthesisUtterance(
-      fromForm !== "feedback"
-        ? "Thanks for reserving!"
-        : "Thanks for your feedback!"
-    );
+    utterThis = new SpeechSynthesisUtterance("Thanks for reserving!");
   }
 
   utterThis.voice =
