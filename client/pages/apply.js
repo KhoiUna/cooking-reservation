@@ -87,6 +87,7 @@ export default function Apply({}) {
                   fullWidth
                   autoComplete="off"
                   value={data.fullName}
+                  variant="filled"
                 />
               </Grid>
 
@@ -101,6 +102,7 @@ export default function Apply({}) {
                   autoComplete="off"
                   placeholder="...@una.edu"
                   value={data.schoolEmail}
+                  variant="filled"
                 />
               </Grid>
 
@@ -113,6 +115,7 @@ export default function Apply({}) {
                   autoComplete="off"
                   placeholder="Eg: Instagram"
                   value={data.socialLink}
+                  variant="filled"
                 />
               </Grid>
 

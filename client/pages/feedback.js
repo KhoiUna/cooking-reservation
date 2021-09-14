@@ -72,6 +72,8 @@ export default function FeedbackForm() {
                   label="Subject"
                   fullWidth
                   autoComplete="off"
+                  variant="filled"
+                  value={data.subject}
                 />
               </Grid>
 
@@ -84,6 +86,7 @@ export default function FeedbackForm() {
                   name="feedback"
                   variant="filled"
                   multiline
+                  value={data.feedback}
                 />
               </Grid>
 

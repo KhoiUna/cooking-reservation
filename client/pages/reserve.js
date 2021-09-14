@@ -142,6 +142,7 @@ export default function Reserve() {
                   fullWidth
                   autoComplete="off"
                   value={data.firstName}
+                  variant="filled"
                 />
               </Grid>
 
@@ -154,6 +155,7 @@ export default function Reserve() {
                   fullWidth
                   autoComplete="off"
                   value={data.lastName}
+                  variant="filled"
                 />
               </Grid>
 
@@ -166,6 +168,8 @@ export default function Reserve() {
                   fullWidth
                   autoComplete="off"
                   type="number"
+                  variant="filled"
+                  placeholder="0"
                 />
               </Grid>
 
