@@ -13,7 +13,11 @@ app.use(helmet());
 app.use(express.json());
 app.use(
   cors({
-    origin: origin,
+    origin: [
+      origin,
+      "https://cooking-feedback.vercel.app",
+      "http://localhost:3000",
+    ],
     optionsSuccessStatus: 200,
     credentials: true,
   })
@@ -28,6 +32,9 @@ app.use("/api/reserve", reserveRoute);
 
 const feedbackRoute = require("./routes/feedback-route");
 app.use("/api/feedback", feedbackRoute);
+
+const applyRoute = require("./routes/apply-route");
+app.use("/api/apply", applyRoute);
 
 //Error handling
 app.use((err, req, res, next) => {
