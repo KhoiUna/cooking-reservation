@@ -43,6 +43,11 @@ export default function Home() {
                 <p>{">>"} Check out our sponsorships</p>
               </Link>
             </li>
+            <li className={homeStyles.home_nav_li}>
+              <Link href="/apply">
+                <p>{">>"} Apply to be a sponsor!</p>
+              </Link>
+            </li>
           </ul>
         </nav>
 
