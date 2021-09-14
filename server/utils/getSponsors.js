@@ -1,4 +1,4 @@
-const sponsors = require("../db/sponsors");
+const sponsors = require("../db/Sponsors");
 
 module.exports = async (date) => {
   try {
