@@ -1,6 +1,9 @@
 import SponsorImg from "../components/SponsorImg";
 import Layout from "../containers/layout";
 import sponsorStyles from "../styles/sponsor.module.css";
+import Link from "next/link";
+import homeStyles from "../styles/home.module.css";
+import Typography from "@material-ui/core/Typography";
 
 export default function Sponsor({}) {
   const sponsorArray = [
@@ -13,12 +16,27 @@ export default function Sponsor({}) {
 
   return (
     <Layout componentName="Sponsor">
-      <h1 className={sponsorStyles.sponsor_title}>
-        Thanks to our sponsorships!
-        <div style={{ margin: "0.5rem 0" }}>
-          Check out their Instagram page!
-        </div>
-      </h1>
+      <section style={{ margin: "0 0.9rem" }}>
+        <h1 className={sponsorStyles.sponsor_title}>
+          There is a small cost to keep this app running.
+          <div style={{ margin: "0.5rem" }}>
+            Thanks to our sponsorships, Rice Hall is more organized!
+          </div>
+          <div style={{ margin: "0.5rem 0" }}>
+            Check out their Instagram page!
+          </div>
+        </h1>
+      </section>
+
+      <nav className={homeStyles.home_nav}>
+        <ul>
+          <li className={homeStyles.home_nav_li}>
+            <Link href="/apply">
+              <p>{">>"} Apply to be a sponsor!</p>
+            </Link>
+          </li>
+        </ul>
+      </nav>
 
       <div className={sponsorStyles.sponsor_flex}>
         {sponsorArray.map((item, index) => (
