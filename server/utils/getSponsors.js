@@ -3,7 +3,13 @@ const sponsors = require("../db/Sponsors");
 module.exports = async (date) => {
   try {
     const res = await sponsors.findAll({
-      attributes: ["id", "full_name", "school_email", "social_link"],
+      attributes: [
+        "id",
+        "full_name",
+        "school_email",
+        "social_link",
+        "submitted_date",
+      ],
       //   where: {
       //     submitted_date: date,
       //   },
