@@ -61,9 +61,11 @@ export default function Reserve() {
 
   const [warn, setWarn] = useState("");
   const [success, setSuccess] = useState(null);
+  const [submitStatus, setSubmitStatus] = useState("submit");
   const handleChange = ({ target }) => {
     setWarn("");
     setSuccess(null);
+    setSubmitStatus("submit");
 
     let { name, value } = target;
     value = name === "numberOfPeople" ? value * 1 : value;
@@ -84,37 +86,40 @@ export default function Reserve() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setSubmitting(true);
+      if (!submitting) {
+        setSubmitting(true);
+        setSubmitStatus("submitting");
 
-      const res = await fetch(`${origin}/api/reserve`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-        },
-        body: JSON.stringify(dataObj),
-      });
-
-      if (res.ok === true) {
-        localStorage.setItem("firstName", dataObj.firstName);
-        localStorage.setItem("lastName", dataObj.lastName);
-
-        setData({
-          firstName: "",
-          lastName: "",
-          numberOfPeople: "",
+        const res = await fetch(`${origin}/api/reserve`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json;charset=utf-8",
+          },
+          body: JSON.stringify(dataObj),
         });
-        setTimeSlot("");
-        setSelectedDate(new Date(Date.now()));
 
-        setTimeout(() => {
+        if (res.ok === true) {
+          localStorage.setItem("firstName", dataObj.firstName);
+          localStorage.setItem("lastName", dataObj.lastName);
+
+          setData({
+            firstName: "",
+            lastName: "",
+            numberOfPeople: "",
+          });
+          setTimeSlot("");
+          setSelectedDate(new Date(Date.now()));
+
           setSubmitting(false);
           setSuccess(true);
+          setSubmitStatus("success");
           setPopUp(true);
-        }, 1000);
-      } else {
-        setWarn(await res.text());
-        setSubmitting(false);
-        setSuccess(false);
+        } else {
+          setWarn(await res.text());
+          setSubmitting(false);
+          setSuccess(false);
+          setSubmitStatus("fail");
+        }
       }
     } catch (e) {
       console.error("Error posting data...");
@@ -186,7 +191,7 @@ export default function Reserve() {
                   type="number"
                   variant="filled"
                   placeholder="0"
-                  value={data.numberOfPeople}
+                  value={dataObj.numberOfPeople}
                 />
               </Grid>
 
@@ -252,7 +257,7 @@ export default function Reserve() {
                       : null
                   }
                 >
-                  SUBMIT{" "}
+                  {submitStatus.toUpperCase() + " "}
                   {submitting && (
                     <CircularProgress
                       style={{
