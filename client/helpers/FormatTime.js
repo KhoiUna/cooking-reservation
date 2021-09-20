@@ -9,7 +9,7 @@ module.exports = {
     if (time - 12 === 0) {
       return "12pm";
     }
-    return `${time - 12}pm`;
+    return `${time}pm`;
   },
   month(index) {
     const monthNames = [
