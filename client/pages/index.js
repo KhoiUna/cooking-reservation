@@ -48,6 +48,11 @@ export default function Home() {
                 <p>{">>"} Apply to be a sponsor!</p>
               </Link>
             </li>
+            <li className={homeStyles.home_nav_li}>
+              <Link href="/time">
+                <p>{">>"} See kitchen's busy time</p>
+              </Link>
+            </li>
           </ul>
         </nav>
 
