@@ -76,6 +76,7 @@ export default function Apply({}) {
                   * There is a small cost to keep this app running. Apply to be
                   sponsors to keep Rice Hall organized!
                   <br />* Share your social page to everyone in Rice!
+                  <br />* Donate $6 !
                 </h3>
               </div>
 
