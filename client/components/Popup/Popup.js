@@ -54,6 +54,25 @@ export default function Popup({ fromForm, firstName }) {
       )}
       <br />
 
+      <Link href="/apply">
+        <div
+          id="apply-link"
+          style={{
+            color: "#640ba8",
+            textAlign: "center",
+            textDecoration: "underline",
+            fontSize: "1.2rem",
+            fontWeight: "bold",
+            margin: "0.5rem 0",
+            cursor: "pointer",
+          }}
+          hidden={showSponsor}
+          onClick={speak}
+        >
+          <p>{">>"} Apply to be a sponsor!</p>
+        </div>
+      </Link>
+
       <Link href="/">
         <button id="home-button" hidden={showSponsor} onClick={speak}>
           Go back to home
@@ -80,6 +99,7 @@ export default function Popup({ fromForm, firstName }) {
               loaded: () => {
                 document.querySelector(".gobi-stories-load").innerText = "Sponsors";
                 document.querySelector(".gobi-stories-load").style.margin = "2rem 1rem 1rem 1rem";
+                document.querySelector("#apply-link").hidden = false;
                 document.querySelector("#home-button").hidden = false;
               },
             }
