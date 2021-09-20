@@ -36,6 +36,9 @@ app.use("/api/feedback", feedbackRoute);
 const applyRoute = require("./routes/apply-route");
 app.use("/api/apply", applyRoute);
 
+const timeRoute = require("./routes/time-route");
+app.use("/api/time", timeRoute);
+
 //Error handling
 app.use((err, req, res, next) => {
   const status = err.status || 500;
