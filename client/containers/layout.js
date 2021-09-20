@@ -20,7 +20,7 @@ export default function Layout({ children, componentName }) {
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2815892623196438"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         ></script>
 
         <title>GLC Cooking Reservation | {componentName}</title>
