@@ -3,14 +3,14 @@ const checkAvailability = require("../utils/checkAvailability");
 const saveReservation = require("../utils/saveReservation");
 const validateData = require("../helpers/validateData");
 
-router.post("/", async (req, res) => {
+router.post("/", async (req, res, next) => {
   try {
     req.body.selectedDate = new Date(
       new Date(req.body.selectedDate).toLocaleDateString()
     );
 
     if (!validateData(req.body)) {
-      res.status(406).send("* Invalid data");
+      return res.status(406).send("* Invalid data");
     }
 
     const availablility = await checkAvailability(
@@ -24,9 +24,11 @@ router.post("/", async (req, res) => {
       saveReservation(req.body);
       res.sendStatus(200);
     }
+    next();
   } catch (e) {
     console.error("Error posting data...");
     console.error(e);
+    next(e);
   }
 });
 
