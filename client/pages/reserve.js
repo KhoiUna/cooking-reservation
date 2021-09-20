@@ -12,6 +12,7 @@ import {
   MenuItem,
   InputLabel,
 } from "@material-ui/core";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
@@ -58,7 +59,12 @@ export default function Reserve() {
     });
   }, []);
 
+  const [warn, setWarn] = useState("");
+  const [success, setSuccess] = useState(null);
   const handleChange = ({ target }) => {
+    setWarn("");
+    setSuccess(null);
+
     let { name, value } = target;
     value = name === "numberOfPeople" ? value * 1 : value;
     setData((prev) => ({
@@ -68,15 +74,18 @@ export default function Reserve() {
   };
 
   const [popUp, setPopUp] = useState(false);
-  const [warn, setWarn] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   let dataObj = {
     ...data,
     selectedDate: new Date(selectedDate.toUTCString()),
     timeSlot,
   };
-  const handleClick = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
+      setSubmitting(true);
+
       const res = await fetch(`${origin}/api/reserve`, {
         method: "POST",
         headers: {
@@ -89,8 +98,6 @@ export default function Reserve() {
         localStorage.setItem("firstName", dataObj.firstName);
         localStorage.setItem("lastName", dataObj.lastName);
 
-        setPopUp(true);
-
         setData({
           firstName: "",
           lastName: "",
@@ -98,20 +105,29 @@ export default function Reserve() {
         });
         setTimeSlot("");
         setSelectedDate(new Date(Date.now()));
+
+        setTimeout(() => {
+          setSubmitting(false);
+          setSuccess(true);
+          setPopUp(true);
+        }, 1000);
       } else {
         setWarn(await res.text());
+        setSubmitting(false);
+        setSuccess(false);
       }
     } catch (e) {
       console.error("Error posting data...");
       console.error(e);
+
+      setSubmitting(false);
+      setSuccess(false);
     }
   };
 
-  const { firstName, lastName, numberOfPeople } = dataObj;
-
   return (
     <Layout componentName="Reserve">
-      <form onChange={handleChange} onSubmit={(e) => e.preventDefault()}>
+      <form onChange={handleChange} onSubmit={handleSubmit}>
         <Container className="form-container">
           <Paper elevation={10}>
             <Grid
@@ -170,6 +186,7 @@ export default function Reserve() {
                   type="number"
                   variant="filled"
                   placeholder="0"
+                  value={data.numberOfPeople}
                 />
               </Grid>
 
@@ -222,32 +239,31 @@ export default function Reserve() {
               )}
 
               <Grid item xs={12} sm={6}>
-                {firstName &&
-                lastName &&
-                numberOfPeople > 0 &&
-                numberOfPeople <= 8 &&
-                new Date(new Date(dataObj.selectedDate).toLocaleDateString()) >=
-                  new Date(new Date().toLocaleDateString()) &&
-                dataObj.timeSlot !== false ? (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleClick}
-                    className="submit-button"
-                    type="submit"
-                  >
-                    SUBMIT
-                  </Button>
-                ) : (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    className="submit-button"
-                    disabled
-                  >
-                    SUBMIT
-                  </Button>
-                )}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className="submit-button"
+                  type="submit"
+                  style={
+                    success
+                      ? { backgroundColor: "green" }
+                      : success === false
+                      ? { backgroundColor: "#ff0000" }
+                      : null
+                  }
+                >
+                  SUBMIT{" "}
+                  {submitting && (
+                    <CircularProgress
+                      style={{
+                        width: "1.7rem",
+                        height: "1.7rem",
+                        margin: "auto 0 auto 0.5rem",
+                        color: "#fff",
+                      }}
+                    />
+                  )}
+                </Button>
               </Grid>
             </Grid>
           </Paper>
