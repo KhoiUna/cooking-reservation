@@ -17,12 +17,6 @@ export default function Layout({ children, componentName }) {
         <link rel="apple-touch-icon" href="/logo192.png" />
         <link rel="manifest" href="/manifest.json" />
 
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2815892623196438"
-          crossOrigin="anonymous"
-        ></script>
-
         <title>GLC Cooking Reservation | {componentName}</title>
       </Head>
 
