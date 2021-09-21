@@ -1,8 +1,8 @@
-const sponsors = require("../db/Sponsors");
+const Sponsors = require("../db/Sponsors");
 
 module.exports = async (date) => {
   try {
-    const res = await sponsors.findAll({
+    const res = await Sponsors.findAll({
       attributes: [
         "id",
         "full_name",
