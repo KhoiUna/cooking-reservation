@@ -37,7 +37,7 @@ export default function Time({}) {
           options={{
             colorAxis: { colors: ["#ff0", "#f00"] },
             sizeAxis: {
-              maxSize: 14,
+              maxSize: 10,
             },
             hAxis: {
               title: "Day of the week",
@@ -50,7 +50,10 @@ export default function Time({}) {
                 { v: 5, f: "Fri" },
                 { v: 6, f: "Sat" },
               ],
-              scaleType: "log",
+              viewWindow: {
+                min: -2,
+                max: 8,
+              },
             },
             vAxis: {
               title: "Time slot",

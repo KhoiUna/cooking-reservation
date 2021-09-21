@@ -83,10 +83,8 @@ module.exports = {
     const dateName = dateNames[nameIndex];
     return `${dateName} - ${date}`;
   },
-  getDayOfWeek(date) {
-    switch (new Date(date).getDay()) {
-      case 0:
-        return "Sun";
+  getDayOfWeek(dateIndex) {
+    switch (dateIndex) {
       case 1:
         return "Mon";
       case 2:
@@ -99,6 +97,8 @@ module.exports = {
         return "Fri";
       case 6:
         return "Sat";
+      case 7:
+        return "Sun";
     }
   },
 };
