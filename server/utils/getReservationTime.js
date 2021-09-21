@@ -20,7 +20,7 @@ module.exports = async () => {
         },
       },
       group: ["selected_date", "time_slot"],
-      order: ["time_slot", "selected_date"],
+      order: ["time_slot"],
     });
 
     const timeList = res.map((i) => i.dataValues);
