@@ -1,6 +1,6 @@
 const { Sequelize } = require("sequelize");
 
-if (process.env.DEVELOPMENT) {
+if (process.env.DEVELOPMENT === "true") {
   //For local
   const user = process.env.USER;
   const database = process.env.DATABASE;
