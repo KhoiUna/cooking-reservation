@@ -1,16 +1,25 @@
 import Layout from "../containers/layout";
 import { Chart } from "react-google-charts";
 import { useEffect, useState } from "react";
+import fetchReservationTimeForChart from "../utils/fetchReservationTimeForChart";
+import FormatTime from "../helpers/FormatTime";
+
+let vAxisTicks = new Array(24).fill(null).map((item, index) => ({
+  v: index,
+  f: FormatTime.timeSlot(index),
+}));
 
 export default function Time({}) {
   const [timeData, setTimeData] = useState([]);
   useEffect(() => {
-    //
+    fetchReservationTimeForChart()
+      .then((r) => setTimeData(r))
+      .catch((err) => console.error("Error fetching time data"));
   }, []);
 
   return (
     <Layout componentName="Busy Times">
-      <h2 style={{ textAlign: "center" }}>Scatter Chart for Cooking Time</h2>
+      <h2 style={{ textAlign: "center" }}>Kitchen's busy times</h2>
 
       <div
         style={{
@@ -20,30 +29,41 @@ export default function Time({}) {
         }}
       >
         <Chart
-          width={"90%"}
+          width={"100%"}
           height={400}
-          chartType="ScatterChart"
+          chartType="BubbleChart"
           loader={<p>Loading Chart...</p>}
-          data={[
-            ["Day of the week", "Time slot", "Time slot"],
-            ["Sun", 10, 2],
-            ["Mon", 2, 2],
-            ["Tue", 12, 2],
-            ["Wed", 3, 2],
-            ["Thu", 4, 2],
-            ["Fri", 6, 2],
-            ["Sat", 8, 2],
-          ]}
+          data={timeData}
           options={{
-            colors: ["#46166b"],
-            pointSize: 10,
+            colorAxis: { colors: ["#ff0", "#f00"] },
+            sizeAxis: {
+              maxSize: 14,
+            },
             hAxis: {
               title: "Day of the week",
+              ticks: [
+                { v: 0, f: "Sun" },
+                { v: 1, f: "Mon" },
+                { v: 2, f: "Tue" },
+                { v: 3, f: "Wed" },
+                { v: 4, f: "Thu" },
+                { v: 5, f: "Fri" },
+                { v: 6, f: "Sat" },
+              ],
+              viewWindow: {
+                min: -2,
+                max: 8,
+              },
             },
-            vAxis: { title: "Time slot", minValue: 0, maxValue: 23 },
-            legend: "none",
+            vAxis: {
+              title: "Time slot",
+              ticks: vAxisTicks,
+              viewWindow: {
+                min: -5,
+                max: 28,
+              },
+            },
           }}
-          rootProps={{ "data-testid": "1" }}
         />
       </div>
     </Layout>
