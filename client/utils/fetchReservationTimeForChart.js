@@ -8,7 +8,7 @@ export default async function fetchReservationTimeForChart() {
   const timeData = res.map((item) => [
     "",
     {
-      v: new Date(item.selected_date).getDay(),
+      v: new Date(item.selected_date).getDay() + 1,
       f: FormatTime.getDayOfWeek(item.selected_date),
     },
     item.time_slot,

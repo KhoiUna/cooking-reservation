@@ -50,10 +50,7 @@ export default function Time({}) {
                 { v: 5, f: "Fri" },
                 { v: 6, f: "Sat" },
               ],
-              viewWindow: {
-                min: -2,
-                max: 8,
-              },
+              scaleType: "log",
             },
             vAxis: {
               title: "Time slot",
