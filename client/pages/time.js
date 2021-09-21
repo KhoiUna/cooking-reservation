@@ -62,6 +62,10 @@ export default function Time({}) {
                 min: -5,
                 max: 28,
               },
+              gridlines: {
+                minSpacing: 1,
+                color: "",
+              },
             },
           }}
         />
