@@ -1,10 +1,17 @@
 const { Op } = require("sequelize");
-const reservations = require("../db/Reservations");
+const Reservations = require("../db/Reservations");
 
 module.exports = async () => {
   try {
-    const res = await reservations.findAll({
-      attributes: ["selected_date", "time_slot"],
+    const res = await Reservations.findAll({
+      attributes: [
+        "time_slot",
+        "selected_date",
+        [
+          Sequelize.fn("SUM", Sequelize.col("number_of_people")),
+          "number_of_people",
+        ],
+      ],
       where: {
         selected_date: {
           [Op.and]: {
@@ -12,6 +19,8 @@ module.exports = async () => {
           },
         },
       },
+      group: ["selected_date", "time_slot"],
+      order: ["time_slot", "selected_date"],
     });
 
     const timeList = res.map((i) => i.dataValues);
