@@ -28,7 +28,7 @@ export default function Sponsor({}) {
         </h1>
       </section>
 
-      <nav className={homeStyles.home_nav}>
+      {/* <nav className={homeStyles.home_nav}>
         <ul>
           <li className={homeStyles.home_nav_li}>
             <Link href="/apply">
@@ -36,7 +36,7 @@ export default function Sponsor({}) {
             </Link>
           </li>
         </ul>
-      </nav>
+      </nav> */}
 
       <div className={sponsorStyles.sponsor_flex}>
         {sponsorArray.map((item, index) => (
