@@ -47,13 +47,11 @@ export default function Cancel() {
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
-    numberOfPeople: "",
   });
   useEffect(() => {
     setData({
       firstName: localStorage.getItem("firstName") || "",
       lastName: localStorage.getItem("lastName") || "",
-      numberOfPeople: "",
     });
   }, []);
 
@@ -66,14 +64,12 @@ export default function Cancel() {
     setSubmitStatus("submit");
 
     let { name, value } = target;
-    value = name === "numberOfPeople" ? value * 1 : value;
     setData((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  const [popUp, setPopUp] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   let dataObj = {
@@ -88,7 +84,7 @@ export default function Cancel() {
         setSubmitting(true);
         setSubmitStatus("submitting");
 
-        const res = await fetch(`${origin}/api/reserve`, {
+        const res = await fetch(`${origin}/api/cancel`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json;charset=utf-8",
@@ -103,7 +99,6 @@ export default function Cancel() {
           setData({
             firstName: "",
             lastName: "",
-            numberOfPeople: "",
           });
           setTimeSlot("");
           setSelectedDate(new Date(Date.now()));
@@ -111,7 +106,6 @@ export default function Cancel() {
           setSubmitting(false);
           setSuccess(true);
           setSubmitStatus("success");
-          setPopUp(true);
         } else {
           setWarn(await res.text());
           setSubmitting(false);
@@ -140,7 +134,12 @@ export default function Cancel() {
               alignItems="center"
               spacing={3}
             >
-              <h2 className="reserve-notice">PLEASE FILL IN ALL FIELDS</h2>
+              <h2
+                className="reserve-notice"
+                style={{ color: "red", margin: "1rem", textAlign: "center" }}
+              >
+                PLEASE FILL IN ALL FIELDS TO REQUEST A CANCELLATION
+              </h2>
 
               <Grid item xs={12} sm={6}>
                 <TextField
