@@ -7,9 +7,11 @@ module.exports = async (fromPage, message) => {
         "\n" + "*"
       }${message}*`,
     });
-
     console.log(`Status Code: ${res.status}`);
+
+    return true;
   } catch (err) {
-    console.error(err);
+    console.error("Error creating discord alert");
+    return;
   }
 };
