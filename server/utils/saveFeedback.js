@@ -1,5 +1,6 @@
 const Feedback = require("../db/Feedback");
 const sequelize = require("../db/connection");
+const createDiscordAlert = require("../helpers/createDiscordAlert");
 
 module.exports = async (subject, feedback) => {
   try {
@@ -13,8 +14,10 @@ module.exports = async (subject, feedback) => {
         { transaction: t }
       );
     });
-  } catch (e) {
+
+    createDiscordAlert("feedback", `**${subject}:** ${feedback}`);
+  } catch (err) {
     console.error("Error saving feedback");
-    console.error(e);
+    console.error(err);
   }
 };
