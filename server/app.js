@@ -36,6 +36,9 @@ app.use("/api/feedback", feedbackRoute);
 const applyRoute = require("./routes/apply-route");
 app.use("/api/apply", applyRoute);
 
+const cancelRoute = require("./routes/cancel-route");
+app.use("/api/cancel", cancelRoute);
+
 const timeRoute = require("./routes/time-route");
 app.use("/api/time", timeRoute);
 
