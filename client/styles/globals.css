@@ -73,11 +73,15 @@ header #header-icon {
 }
 
 #reserve-button {
-  background-color: greenyellow;
+  background-color: #adff2f;
+}
+
+#cancel-button {
+  background-color: #ffff00;
 }
 
 #feedback-button {
-  background-color: red;
+  background-color: #ff0000;
 }
 
 /* Style Calendar */

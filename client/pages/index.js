@@ -81,6 +81,9 @@ export default function Home() {
               <Link href="/reserve">
                 <button id="reserve-button">RESERVE</button>
               </Link>
+              <Link href="/cancel">
+                <button id="cancel-button">CANCEL</button>
+              </Link>
               <Link href="/feedback">
                 <button id="feedback-button">FEEDBACK</button>
               </Link>
