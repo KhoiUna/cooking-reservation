@@ -8,7 +8,8 @@ export default function Popup({ fromForm, firstName }) {
   const randomizeSponsor = (max) => Math.floor(Math.random() * max);
   const [showSponsor, setShowSponsor] = useState(false);
   useEffect(() => {
-    setShowSponsor(randomizeSponsor(2) === 1);
+    // setShowSponsor(randomizeSponsor(2) === 1);
+    setShowSponsor(false);
   }, []);
 
   const [quote, setQuote] = useState("");
@@ -54,7 +55,7 @@ export default function Popup({ fromForm, firstName }) {
       )}
       <br />
 
-      <Link href="/apply">
+      {/* <Link href="/apply">
         <div
           id="apply-link"
           style={{
@@ -71,7 +72,7 @@ export default function Popup({ fromForm, firstName }) {
         >
           <p>{">>"} Apply to be a sponsor!</p>
         </div>
-      </Link>
+      </Link> */}
 
       <Link href="/">
         <button id="home-button" hidden={showSponsor} onClick={speak}>
