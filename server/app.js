@@ -13,11 +13,7 @@ app.use(helmet());
 app.use(express.json());
 app.use(
   cors({
-    origin: [
-      origin,
-      "https://cooking-feedback.vercel.app",
-      "http://localhost:3000",
-    ],
+    origin: [origin, "https://glc-admin.vercel.app", "http://localhost:3000"],
     optionsSuccessStatus: 200,
     credentials: true,
   })
