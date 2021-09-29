@@ -138,7 +138,7 @@ export default function Cancel() {
                 className="reserve-notice"
                 style={{ color: "red", margin: "1rem", textAlign: "center" }}
               >
-                PLEASE FILL IN ALL FIELDS TO REQUEST A CANCELLATION
+                * IT TAKES A WHILE TO CANCEL, SO PLEASE DO NOT PANICK!
               </h2>
 
               <Grid item xs={12} sm={6}>
