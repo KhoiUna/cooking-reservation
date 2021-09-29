@@ -2,6 +2,19 @@ const router = require("express").Router();
 const checkAvailability = require("../utils/checkAvailability");
 const saveReservation = require("../utils/saveReservation");
 const validateData = require("../helpers/validateData");
+const getDateReservations = require("../utils/getDateReservations.js");
+
+router.get("/", async (req, res, next) => {
+  try {
+    const dateIndex = req.query.dateIndex;
+    const reservations = await getDateReservations(dateIndex);
+    res.status(200).json(reservations);
+  } catch (e) {
+    console.error("Error getting data...");
+    console.error(e);
+    next(e);
+  }
+});
 
 router.post("/", async (req, res, next) => {
   try {
