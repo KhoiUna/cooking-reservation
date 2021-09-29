@@ -3,6 +3,7 @@ const checkAvailability = require("../utils/checkAvailability");
 const saveReservation = require("../utils/saveReservation");
 const validateData = require("../helpers/validateData");
 const getDateReservations = require("../utils/getDateReservations.js");
+const deleteReservation = require("../utils/deleteReservation.js");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -11,6 +12,19 @@ router.get("/", async (req, res, next) => {
     res.status(200).json(reservations);
   } catch (e) {
     console.error("Error getting data...");
+    console.error(e);
+    next(e);
+  }
+});
+
+router.delete("/", async (req, res, next) => {
+  try {
+    if (!(await deleteReservation(req.body.reservationId)))
+      return res.sendStatus(406);
+
+    res.sendStatus(200);
+  } catch (e) {
+    console.error("Error deleting data...");
     console.error(e);
     next(e);
   }
