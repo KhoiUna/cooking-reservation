@@ -14,13 +14,11 @@ export default function Calendar({
         <thead>
           <tr>
             <th id="left-arrow">
-              {dateIndex > 0 && (
-                <FontAwesomeIcon
-                  className="arrow-button"
-                  icon={faArrowLeft}
-                  onClick={() => handleClickDate("left")}
-                />
-              )}
+              {/* <FontAwesomeIcon
+                className="arrow-button"
+                icon={faArrowLeft}
+                onClick={() => handleClickDate("left")}
+              /> */}
             </th>
             <th colSpan="7" id="month-year">
               <h3 style={{ paddingRight: "14%" }}>
