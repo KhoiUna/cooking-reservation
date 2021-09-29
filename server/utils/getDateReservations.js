@@ -4,7 +4,7 @@ const { Op } = require("sequelize");
 module.exports = async (dateIndex) => {
   try {
     const currentDate = new Date(
-      new Date(Date.now() + 10 ** 8 * 6 * dateIndex).toDateString()
+      new Date(Date.now() + 10 ** 8 * dateIndex).toDateString()
     );
 
     const reservations = await Reservations.findAll({
