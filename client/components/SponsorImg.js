@@ -4,7 +4,11 @@ export default function SponsorImg({ imgSrc, instaUsername, instaLink }) {
   return (
     <div className={sponsorStyles.sponsor_card}>
       <div style={{ margin: "auto", width: "6rem" }}>
-        <img src={imgSrc} className={sponsorStyles.sponsor_img} />
+        <img
+          src={imgSrc}
+          className={sponsorStyles.sponsor_img}
+          alt={`${instaUsername}'s avatar'`}
+        />
       </div>
 
       <a

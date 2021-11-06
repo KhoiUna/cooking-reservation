@@ -8,6 +8,11 @@ import Typography from "@material-ui/core/Typography";
 export default function Sponsor({}) {
   const sponsorArray = [
     {
+      imgSrc: "/img/una.jpg",
+      instaUsername: "@una_intl",
+      instaLink: "https://www.instagram.com/una_intl/",
+    },
+    {
       imgSrc: "/img/ken.jpg",
       instaUsername: "@kentaro1575",
       instaLink: "https://www.instagram.com/kentaro1575/",
@@ -16,7 +21,7 @@ export default function Sponsor({}) {
 
   return (
     <Layout componentName="Sponsor">
-      <section style={{ margin: "0 0.9rem" }}>
+      <section style={{ margin: "0 0.9rem", lineHeight: "2.3rem" }}>
         <h1 className={sponsorStyles.sponsor_title}>
           There is a small cost to keep this app running.
           <div style={{ margin: "0.5rem" }}>
